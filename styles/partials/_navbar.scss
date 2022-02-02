@@ -1,0 +1,117 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+@use "./fonts" as *;
+.header__nav {
+  font-family: "Avenir";
+  width: 100%;
+  height: 80px;
+  background-color: $color-black;
+  color: $color-silver;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &-logo-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-image {
+    width: 7.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 0.5rem;
+    width: 100%;
+
+    &-item {
+      width: 50vw;
+      text-align: center;
+      border-bottom: 0.2125rem solid transparent;
+
+      &-link {
+        text-decoration: none;
+        display: block;
+        padding-bottom: 0.44rem;
+
+        &:hover {
+          border-bottom: 0.4125rem solid $color-white;
+        }
+      }
+    }
+
+    &-item #active {
+      color: $color-white;
+      border-bottom: 0.4125rem solid $color-white;
+    }
+  }
+}
+@include medium {
+  .header__nav {
+    flex-direction: row;
+    &-logo-container {
+      margin-top: 0px;
+    }
+    &-image {
+      width: 7.5rem;
+      margin-bottom: 0rem;
+      margin-left: 1.5rem;
+    }
+    &-menu {
+      justify-content: left;
+      align-items: center;
+      margin-top: 0px;
+      height: 5rem;
+      &-item {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        height: 5rem;
+        width: 5rem;
+        border-bottom: unset;
+        margin-left: 3.5rem;
+        &-link {
+          width: 5rem;
+          display: block;
+          margin-top: 0.7125rem;
+          padding-bottom: 1.4rem;
+          padding-top: 1.5rem;
+          border-bottom: 0.4125rem solid transparent;
+        }
+      }
+    }
+  }
+}
+
+@include large {
+  .header__nav {
+    &-logo-container {
+      margin-top: 0px;
+    }
+    &-image {
+      width: 7.5rem;
+      margin-bottom: 0rem;
+      margin-left: 11.25rem;
+      margin-right: 1.75rem;
+    }
+    &-menu {
+      justify-content: left;
+      margin-top: 0px;
+      &-item {
+        margin-left: 1.75rem;
+        margin-right: 1.75rem;
+        border-bottom: unset;
+        &-link {
+          border-bottom: 0.4125rem solid transparent;
+        }
+      }
+    }
+  }
+}

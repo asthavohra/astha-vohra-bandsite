@@ -1,0 +1,127 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+.about {
+  padding: 0rem 1rem 2.5rem 1rem;
+  color: $color-black;
+  background-color: $color-white;
+
+  &__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    &-title {
+      font-family: "Avenir";
+      font-size: 1.5rem;
+      padding-top: 2rem;
+      line-height: 2rem;
+      font-weight: 700;
+    }
+    &-image {
+      height: 45.313vw;
+      width: 100%;
+      margin: 1.5rem 0;
+      object-fit: cover;
+    }
+    &-quote {
+      font-family: "Avenir";
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+      padding-bottom: 2rem;
+      width: 85%;
+      font-weight: 700;
+      &-person {
+        padding-bottom: 2.5rem;
+        font-family: "Avenir";
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__bio-names {
+    font-family: "Avenir";
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 600;
+  }
+  &__bio-main {
+    font-family: "Avenir";
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    padding-top: 1.5rem;
+  }
+}
+
+@include medium {
+  .about {
+    padding: 0rem 1.5rem 1.5rem 1.5rem;
+
+    &__intro {
+      &-title {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+      }
+      &-image {
+        height: 47.136vw;
+      }
+      &-quote {
+        font-size: 1.5rem;
+        line-height: 2rem;
+        width: unset;
+        &-person {
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+      }
+    }
+    &__bio-names {
+      font-size: 1.5rem;
+      line-height: 2rem;
+    }
+    &__bio-container-main {
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    &__bio-main {
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
+  #main-bot {
+    padding-left: 1.5em;
+  }
+}
+
+@include large {
+  .about {
+    padding: 0 17rem 3rem 17rem;
+    &__intro {
+      &-title {
+        margin: 3rem 0 0 -5.75rem;
+      }
+      &-image {
+        margin: 3rem 0;
+        height: 31.25vw;
+      }
+      &-quote {
+        padding-bottom: 2.5rem;
+        &-person {
+          padding-bottom: 3.5rem;
+        }
+      }
+    }
+    &__bio-container-main {
+      width: 55rem;
+    }
+    &__bio-main {
+      width: 26.25rem;
+      padding-top: 2rem;
+    }
+  }
+  #main-bot {
+    padding-left: 2.5rem;
+  }
+}

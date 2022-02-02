@@ -1,0 +1,54 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+main {
+  padding: unset;
+}
+
+.hero {
+  height: 11.4375rem;
+  width: 100%;
+  background-image: url("../assets/images/hero-bio.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  &__opacity {
+    background-color: rgba($color: black, $alpha: 0.5);
+    height: inherit;
+    width: inherit;
+    display: flex;
+    align-items: center;
+  }
+  &__title {
+    font-family: "Avenir";
+    color: $color-white;
+    font-size: 1.5rem;
+    width: 13rem;
+    line-height: 2rem;
+    padding-left: 1rem;
+    font-weight: 700;
+  }
+}
+
+@include medium {
+  .hero {
+    height: 25rem;
+    &__title {
+      font-size: 3.75rem;
+      line-height: 4.25rem;
+      width: 32rem;
+      padding-left: 1.5rem;
+    }
+  }
+}
+
+@include large {
+  .hero {
+    height: 41.875rem;
+    &__title {
+      padding-left: 11.25rem;
+    }
+  }
+}

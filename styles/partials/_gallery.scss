@@ -1,0 +1,64 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+.gallery {
+  background-color: $color-alabaster;
+  padding: 0 1rem;
+  &__title {
+    font-family: "Avenir";
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 2rem 0 1rem 0;
+    font-weight: 700;
+  }
+  &__images {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1.5rem;
+    &-item {
+      height: 50.625vw;
+      width: 100%;
+      padding: 0.5rem 0;
+      filter: grayscale(1);
+    }
+    &-item:hover {
+      filter: none;
+    }
+  }
+}
+
+@include medium {
+  .gallery {
+    padding: 0 1.5rem;
+    &__title {
+      font-size: 2.25rem;
+      line-height: 2.75rem;
+      padding-bottom: 2rem;
+    }
+    &__images {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      &-item {
+        height: 16.40625vw;
+        width: calc(33% - 12px);
+        padding: 0 0 1.5rem 0;
+      }
+    }
+  }
+}
+
+@include large {
+  .gallery {
+    padding: 0 11.25rem;
+    &__title {
+      padding: 3rem 0 4rem 0;
+    }
+    &__images {
+      padding-bottom: 16px;
+      &-item {
+        height: 11.7363vw;
+      }
+    }
+  }
+}

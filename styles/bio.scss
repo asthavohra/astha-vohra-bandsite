@@ -1,0 +1,19 @@
+@use "./partials/breakpoints";
+@use "./partials/colors";
+@use "./partials/fonts";
+@use "./partials/navbar";
+@use "./partials/hero";
+@use "./partials/about";
+@use "./partials/footer";
+@use "./partials/gallery";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

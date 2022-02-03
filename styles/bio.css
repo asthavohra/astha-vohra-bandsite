@@ -1,19 +1,19 @@
 /* media query for mobile*/
 /* media query for tablet*/
-/* media query for high pixel density desktops*/
+/* media query for desktops*/
 @font-face {
   font-family: "Avenir";
-  src: url("./assets/font/AvenirNextLTPro-Regular.otf") format("otf");
+  src: url("../../assets/fonts/AvenirNextLTPro.ttf");
   font-weight: 400;
 }
 @font-face {
   font-family: "Avenir";
-  src: url("./assets/font/AvenirNextLTPro-Demi.otf") format("otf");
+  src: url("../../assets/fonts/AvenirNextLTProDemi.ttf");
   font-weight: 600;
 }
 @font-face {
   font-family: "Avenir";
-  src: url("./assets/font/AvenirNextLTPro-Bold.otf") format("otf");
+  src: url("../../assets/fonts/AvenirNextLTProBold.ttf");
   font-weight: 700;
 }
 .header__nav {
@@ -21,7 +21,7 @@
   width: 100%;
   height: 80px;
   background-color: #323232;
-  color: #afafaf;
+  color: #e1e1e1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -320,15 +320,23 @@ main {
   font-size: 0.875rem;
   line-height: 1.375rem;
   padding-bottom: 1.25rem;
+  font-weight: 400;
 }
 .footer__contact-location, .footer__contact-link {
-  color: #afafaf;
+  color: #ffffff;
   text-decoration: none;
   margin-bottom: 1.25rem;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.5rem;
 }
 .footer__copyright {
-  color: #afafaf;
   padding-bottom: 2rem;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #ffffff;
+  line-height: 1.5rem;
 }
 
 @media only screen and (min-width: 768px) {

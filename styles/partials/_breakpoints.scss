@@ -12,7 +12,7 @@
   }
 }
 
-/* media query for high pixel density desktops*/
+/* media query for desktops*/
 @mixin large {
   @media only screen and (min-width: 1440px) {
     @content;

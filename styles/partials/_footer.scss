@@ -29,17 +29,25 @@
       font-size: 0.875rem;
       line-height: 1.375rem;
       padding-bottom: 1.25rem;
+      font-weight: 400;
     }
     &-location,
     &-link {
-      color: $color-silver;
+      color: $color-white;
       text-decoration: none;
       margin-bottom: 1.25rem;
+      font-weight: 400;
+      font-size: 1rem;
+      color: $color-white;
+      line-height: 1.5rem;
     }
   }
   &__copyright {
-    color: $color-silver;
     padding-bottom: 2rem;
+    font-weight: 400;
+    font-size: 1rem;
+    color: $color-white;
+    line-height: 1.5rem;
   }
 }
 

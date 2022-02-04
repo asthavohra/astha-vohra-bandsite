@@ -1,6 +1,10 @@
 @use "./colors" as *;
 @use "./breakpoints" as *;
+@use "./default" as *;
+/*
 .footer {
+  display: flex;
+  flex-direction: column;
   background-color: $color-black;
   color: $color-white;
   padding: 0 1rem;
@@ -12,18 +16,16 @@
     font-family: "Avenir";
     font-size: 1.5rem;
     line-height: 2rem;
-    padding: 2rem 0 1.5rem 0;
+    margin: 3rem 0 0 1rem;
     font-weight: 700;
   }
   &__social {
-    padding-bottom: 2rem;
+    margin: 1rem 0 0 1rem;
     &-link {
-      margin-right: 1.6rem;
+      margin-right: 2rem;
     }
   }
-  &__logo {
-    display: none;
-  }
+
   &__contact {
     &-name {
       font-size: 0.875rem;
@@ -49,10 +51,40 @@
     color: $color-white;
     line-height: 1.5rem;
   }
+  &__logo {
+    margin: 3.7rem 0 3.5rem 0;
+    padding: 0 1rem;
+    max-height: 1.25rem;
+    max-width: 7.5rem;
+  }
+  &__title__social {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__contact {
+    &-combine {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  &__contact {
+    &-combine {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__logo {
+    &-copyright {
+      margin: 0;
+    }
+  }
 }
 
 @include medium {
   .footer {
+    display: flex;
+    flex-direction: row;
     padding: 0 1.5rem;
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -64,18 +96,16 @@
     &__title {
       font-size: 2.25rem;
       line-height: 2.75rem;
-      padding: 3rem 0 3.5rem 0;
+      margin: 3rem 0 3.5rem 0;
     }
     &__social {
-      padding: 0 8rem 0 0;
+      margin: 3.7rem 0 3.5rem 8rem;
       &-link {
         margin-right: 2rem;
       }
     }
     &__logo {
-      display: inherit;
-      height: 1.5rem;
-      width: 7.5rem;
+      margin-left: auto;
     }
     &__contact {
       &-name {
@@ -94,14 +124,165 @@
         justify-content: space-between;
       }
     }
+    &__title__social {
+      display: flex;
+      flex-direction: row;
+    }
+    &__contact {
+      &-combine {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+    &__logo {
+      &-copyright {
+        margin-left: auto;
+      }
+    }
   }
 }
 
 @include large {
   .footer {
+    display: flex;
+    flex-direction: row;
     padding: 0 11.25rem;
     &__social {
-      padding-right: 30rem;
+      margin: 3.7rem 0 3.5rem 8rem;
+    }
+    &__title {
+      margin: 3rem 0 3.5rem 0;
+      font-family: "Avenir";
+      font-size: 1.5rem;
+    }
+    &__contact {
+      &-container {
+        gap: 5rem;
+        justify-content: flex-start;
+        display: flex;
+      }
+    }
+    &__logo {
+      margin-left: auto;
+    }
+    &__title__social {
+      display: flex;
+      flex-direction: row;
+    }
+    &__contact {
+      &-combine {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+    &__logo {
+      &-copyright {
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+*/
+.footer {
+  background-color: $color-black;
+  color: $color-white;
+  font-family: "Avenir";
+  font-weight: 400;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+
+  &__top {
+    // Put the title, social icons and logo in a row for devices >=tablet
+    @include medium {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    // Split the top part of the footer into two sections for easier alignment for devices >=tablet
+    &--left {
+      @include medium {
+        width: 60%;
+        display: flex;
+        align-items: baseline;
+      }
+    }
+
+    &-title {
+      // Increase font size to match mockup
+      font-size: 2rem;
+      @include medium {
+        padding-right: 2.5rem;
+      }
+    }
+    &-social {
+      // Put the social icons in a row for all devices - spacing is controlled by static padding instead of justify-content
+      display: flex;
+      justify-content: flex-start;
+      padding-bottom: 2rem;
+
+      // Set the icon spacing
+      &-icon {
+        padding-right: 2rem;
+      }
+    }
+
+    &-logo {
+      // Hide the logo for mobile display
+      display: none;
+
+      // Show the logo for devices >= tablet size
+      @include medium {
+        display: block;
+      }
+
+      // Increase the logo size for desktops
+      @include large {
+        height: 1.5rem;
+        width: 9.375rem;
+      }
+    }
+  }
+
+  &__contacts {
+    // Put the contact information in a row for devices >= tablet size
+    @include medium {
+      display: flex;
+    }
+  }
+
+  &__contact {
+    @include medium {
+      // Creates consistent spacing between the contacts once they are flexed
+      padding-right: 3%;
+      padding-right: 1.5rem;
+      // Set the width of each contact to be absolute to keep them from moving across devices
+      width: 13.75rem;
+    }
+
+    &-name {
+      font-weight: 600;
+    }
+
+    &-email {
+      padding-bottom: 1.875rem;
+      @include large {
+        padding-bottom: 2.5rem;
+      }
+    }
+  }
+
+  &__copyright {
+    font-weight: 400;
+    padding-bottom: 2.5rem;
+    // Used absolute measurements to ensure it stays on 2 lines for all mobile devices
+    width: 12.75rem;
+
+    // Displays the contact information in one line for devices >= tablet size
+    @include medium {
+      width: 100%;
     }
   }
 }

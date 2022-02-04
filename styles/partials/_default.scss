@@ -1,0 +1,97 @@
+@use "./colors" as *;
+@use "./breakpoints" as *;
+ul {
+  list-style-type: none;
+}
+
+// Remove the underlines from all links
+a {
+  text-decoration: none;
+  color: $color-white;
+}
+h1,
+.title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  @include medium {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
+  @include large {
+    font-size: 3.75rem;
+    line-height: 4.25rem;
+  }
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem;
+
+  @include medium {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+  @include large {
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+  }
+}
+
+h3 {
+  @include medium {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+h4,
+p {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  font-weight: 400;
+
+  @include medium {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+  @include large {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+  }
+}
+.footer {
+  padding: 0 5%;
+
+  @include medium {
+    padding: 0 3%;
+  }
+  @include large {
+    padding: 0 12.5%;
+  }
+}
+
+.footer__contact div {
+  padding-bottom: 20px;
+
+  @include large {
+    padding-bottom: 24px;
+  }
+}
+.section__title {
+  @extend .title;
+  //Remove the line height from the section titles to attain style guide spacing between elements
+  line-height: 1.2;
+
+  // Set up consistent padding for the title of each section
+  padding: 32px 0 24px 0;
+
+  @include medium {
+    padding: 40px 0 32px 0;
+  }
+  @include large {
+    padding: 40px 0 40px 0;
+  }
+}

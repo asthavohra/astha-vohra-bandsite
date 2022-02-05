@@ -94,12 +94,20 @@
   &__copyright {
     font-weight: 400;
     padding-bottom: 2.5rem;
-    // Used absolute measurements to ensure it stays on 2 lines for all mobile devices
-    width: 12.75rem;
-
-    // Displays the contact information in one line for medium devices
+    width: 100%;
     @include medium {
       width: 100%;
+    }
+    &-hidden {
+      margin-bottom: 3%;
+      margin-top: 10%;
+
+      @include medium {
+        display: none;
+      }
+      @include large {
+        display: none;
+      }
     }
   }
 }

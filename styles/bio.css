@@ -474,11 +474,25 @@ p {
 .footer__copyright {
   font-weight: 400;
   padding-bottom: 2.5rem;
-  width: 12.75rem;
+  width: 100%;
 }
 @media only screen and (min-width: 768px) {
   .footer__copyright {
     width: 100%;
+  }
+}
+.footer__copyright-hidden {
+  margin-bottom: 3%;
+  margin-top: 10%;
+}
+@media only screen and (min-width: 768px) {
+  .footer__copyright-hidden {
+    display: none;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .footer__copyright-hidden {
+    display: none;
   }
 }
 

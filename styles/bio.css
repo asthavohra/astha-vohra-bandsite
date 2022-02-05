@@ -53,9 +53,11 @@
   text-decoration: none;
   display: block;
   padding-bottom: 0.44rem;
+  color: #afafaf;
 }
 .header__nav-menu-item-link:hover {
   border-bottom: 0.4125rem solid #ffffff;
+  color: #ffffff;
 }
 .header__nav-menu-item #active {
   color: #ffffff;
@@ -172,125 +174,84 @@ main {
     padding-left: 11.25rem;
   }
 }
-.about {
-  padding: 0rem 1rem 2.5rem 1rem;
-  color: #323232;
-  background-color: #ffffff;
-}
-.about__intro {
+.bio {
   display: flex;
   flex-direction: column;
-  align-items: left;
-}
-.about__intro-title {
+  align-items: flex-start;
   font-family: "Avenir";
-  font-size: 1.5rem;
-  padding-top: 2rem;
-  line-height: 2rem;
-  font-weight: 600;
 }
-.about__intro-image {
-  height: 45.313vw;
-  width: 100%;
-  margin: 1.5rem 0;
-  -o-object-fit: cover;
-     object-fit: cover;
+@media only screen and (min-width: 1200px) {
+  .bio__content {
+    padding: 0 8.5%;
+  }
 }
-.about__intro-quote {
-  font-family: "Avenir";
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-  padding-bottom: 2rem;
-  width: 85%;
-  font-weight: 600;
+.bio__image {
+  margin-bottom: 24px;
+  min-width: 100%;
+  max-width: 100%;
 }
-.about__intro-quote-person {
-  padding-bottom: 2.5rem;
-  font-family: "Avenir";
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-  font-weight: 600;
-}
-.about__bio-names {
-  font-family: "Avenir";
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-  font-weight: 600;
-}
-.about__bio-main {
-  font-family: "Avenir";
-  font-weight: 400;
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-  padding-top: 1.5rem;
-}
-
 @media only screen and (min-width: 768px) {
-  .about {
-    padding: 0rem 1.5rem 1.5rem 1.5rem;
-  }
-  .about__intro-title {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
-  }
-  .about__intro-image {
-    height: 47.136vw;
-  }
-  .about__intro-quote {
-    font-size: 1.5rem;
-    line-height: 2rem;
-    width: unset;
-  }
-  .about__intro-quote-person {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-  .about__bio-names {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-  .about__bio-container-main {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .about__bio-main {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-  }
-
-  #main-bot {
-    padding-left: 1.5em;
+  .bio__image {
+    margin-bottom: 32px;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .about {
-    padding: 0 17rem 3rem 17rem;
-  }
-  .about__intro-title {
-    margin: 3rem 0 0 -5.75rem;
-  }
-  .about__intro-image {
-    margin: 3rem 0;
-    height: 31.25vw;
-  }
-  .about__intro-quote {
-    padding-bottom: 2.5rem;
-  }
-  .about__intro-quote-person {
-    padding-bottom: 3.5rem;
-  }
-  .about__bio-container-main {
-    width: 55rem;
-  }
-  .about__bio-main {
-    width: 26.25rem;
-    padding-top: 2rem;
-  }
-
-  #main-bot {
-    padding-left: 2.5rem;
+  .bio__image {
+    margin: 0 auto 48px auto;
   }
 }
+.bio__quote {
+  padding-bottom: 32px;
+}
+@media only screen and (min-width: 1200px) {
+  .bio__quote {
+    width: 90%;
+  }
+}
+.bio__signature {
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding-bottom: 40px;
+}
+@media only screen and (min-width: 768px) {
+  .bio__signature {
+    font-size: 1rem;
+  }
+}
+.bio__name {
+  padding-bottom: 24px;
+}
+@media only screen and (min-width: 1200px) {
+  .bio__name {
+    padding-bottom: 32px;
+  }
+}
+.bio__story {
+  padding-bottom: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .bio__story {
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.bio__story-text {
+  padding-bottom: 24px;
+}
+@media only screen and (min-width: 768px) {
+  .bio__story-text {
+    width: 47%;
+    padding-bottom: 40px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .bio__story-text {
+    padding-bottom: 48px;
+  }
+}
+
 ul {
   list-style-type: none;
 }
@@ -325,7 +286,7 @@ h1,
 }
 
 h2 {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1.5rem;
   line-height: 2rem;
 }
@@ -342,10 +303,23 @@ h2 {
   }
 }
 
+h3 {
+  font-size: 0.875rem;
+  line-height: 1.375rem;
+  font-weight: 600;
+}
 @media only screen and (min-width: 768px) {
   h3 {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  h3 {
+    font-size: 1.5rem;
     line-height: 1.5rem;
+    font-weight: 600;
   }
 }
 
@@ -370,16 +344,19 @@ p {
   }
 }
 
-.footer {
+.footer,
+.bio {
   padding: 0 5%;
 }
 @media only screen and (min-width: 768px) {
-  .footer {
+  .footer,
+.bio {
     padding: 0 3%;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .footer {
+  .footer,
+.bio {
     padding: 0 12.5%;
   }
 }
@@ -395,203 +372,30 @@ p {
 
 .section__title {
   line-height: 1.2;
+  font-weight: 700;
+  line-height: 2rem;
+  font-size: 1.5rem;
   padding: 32px 0 24px 0;
 }
 @media only screen and (min-width: 768px) {
   .section__title {
     padding: 40px 0 32px 0;
+    line-height: 1.2;
+    font-weight: 700;
+    line-height: 2.75rem;
+    font-size: 2.255rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   .section__title {
     padding: 40px 0 40px 0;
-  }
-}
-
-/*
-.footer {
-  display: flex;
-  flex-direction: column;
-  background-color: $color-black;
-  color: $color-white;
-  padding: 0 1rem;
-  font-family: "Avenir";
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
-  font-weight: 400;
-  &__title {
-    font-family: "Avenir";
-    font-size: 1.5rem;
-    line-height: 2rem;
-    margin: 3rem 0 0 1rem;
+    line-height: 1.2;
     font-weight: 700;
-  }
-  &__social {
-    margin: 1rem 0 0 1rem;
-    &-link {
-      margin-right: 2rem;
-    }
-  }
-
-  &__contact {
-    &-name {
-      font-size: 0.875rem;
-      line-height: 1.375rem;
-      padding-bottom: 1.25rem;
-      font-weight: 400;
-    }
-    &-location,
-    &-link {
-      color: $color-white;
-      text-decoration: none;
-      margin-bottom: 1.25rem;
-      font-weight: 400;
-      font-size: 1rem;
-      color: $color-white;
-      line-height: 1.5rem;
-    }
-  }
-  &__copyright {
-    padding-bottom: 2rem;
-    font-weight: 400;
-    font-size: 1rem;
-    color: $color-white;
-    line-height: 1.5rem;
-  }
-  &__logo {
-    margin: 3.7rem 0 3.5rem 0;
-    padding: 0 1rem;
-    max-height: 1.25rem;
-    max-width: 7.5rem;
-  }
-  &__title__social {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__contact {
-    &-combine {
-      display: flex;
-      flex-direction: row;
-    }
-  }
-  &__contact {
-    &-combine {
-      display: flex;
-      flex-direction: column;
-    }
-  }
-  &__logo {
-    &-copyright {
-      margin: 0;
-    }
+    line-height: 2.75rem;
+    font-size: 2.25rem;
   }
 }
 
-@include medium {
-  .footer {
-    display: flex;
-    flex-direction: row;
-    padding: 0 1.5rem;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    &__main {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    &__title {
-      font-size: 2.25rem;
-      line-height: 2.75rem;
-      margin: 3rem 0 3.5rem 0;
-    }
-    &__social {
-      margin: 3.7rem 0 3.5rem 8rem;
-      &-link {
-        margin-right: 2rem;
-      }
-    }
-    &__logo {
-      margin-left: auto;
-    }
-    &__contact {
-      &-name {
-        font-size: 1rem;
-        line-height: 1.5rem;
-        padding-bottom: 1.5rem;
-      }
-      &-location {
-        padding-bottom: 0.25rem;
-      }
-      &-link {
-        margin-bottom: 2.5rem;
-      }
-      &-container {
-        display: flex;
-        justify-content: space-between;
-      }
-    }
-    &__title__social {
-      display: flex;
-      flex-direction: row;
-    }
-    &__contact {
-      &-combine {
-        display: flex;
-        flex-direction: row;
-      }
-    }
-    &__logo {
-      &-copyright {
-        margin-left: auto;
-      }
-    }
-  }
-}
-
-@include large {
-  .footer {
-    display: flex;
-    flex-direction: row;
-    padding: 0 11.25rem;
-    &__social {
-      margin: 3.7rem 0 3.5rem 8rem;
-    }
-    &__title {
-      margin: 3rem 0 3.5rem 0;
-      font-family: "Avenir";
-      font-size: 1.5rem;
-    }
-    &__contact {
-      &-container {
-        gap: 5rem;
-        justify-content: flex-start;
-        display: flex;
-      }
-    }
-    &__logo {
-      margin-left: auto;
-    }
-    &__title__social {
-      display: flex;
-      flex-direction: row;
-    }
-    &__contact {
-      &-combine {
-        display: flex;
-        flex-direction: row;
-      }
-    }
-    &__logo {
-      &-copyright {
-        margin-left: auto;
-        display: flex;
-        flex-direction: column;
-      }
-    }
-  }
-}
-*/
 .footer {
   background-color: #323232;
   color: #ffffff;

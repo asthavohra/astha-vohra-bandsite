@@ -40,9 +40,11 @@
         text-decoration: none;
         display: block;
         padding-bottom: 0.44rem;
+        color: $color-silver;
 
         &:hover {
           border-bottom: 0.4125rem solid $color-white;
+          color: $color-white;
         }
       }
     }

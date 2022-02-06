@@ -98,10 +98,12 @@
     @include medium {
       width: 100%;
     }
+    //aligned the Bandsite logo for small devices
     &-hidden {
       margin-bottom: 3%;
       margin-top: 10%;
 
+      //hide the logo for medium and large devices
       @include medium {
         display: none;
       }

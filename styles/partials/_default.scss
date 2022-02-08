@@ -76,10 +76,20 @@ p {
     line-height: 1.375rem;
   }
 }
-
+// labels
+h5,
+.new-comment__label,
+.shows__label {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  color: $color-silver;
+  font-weight: 600;
+}
 // Define the default padding on the left and right side of the page for consistent alignment
 .footer,
-.bio {
+.bio,
+.comments,
+.hero__content {
   padding: 0 5%;
 
   @include medium {
@@ -101,7 +111,7 @@ p {
 .section__title {
   @extend .title;
   //Remove the line height from the section titles to attain style guide spacing between elements
-  line-height: 1.2;
+  line-height: 1.2rem;
   font-weight: 700;
   line-height: 2rem;
   font-size: 1.5rem;
@@ -122,5 +132,14 @@ p {
     font-weight: 700;
     line-height: 2.75rem;
     font-size: 2.25rem;
+  }
+}
+// default styling for input elements states
+.new-comment__form-name,
+.new-comment__form-message,
+.new-comment__form-button {
+  &:focus {
+    outline: none;
+    border-color: $color-black;
   }
 }

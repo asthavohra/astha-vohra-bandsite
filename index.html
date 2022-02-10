@@ -97,7 +97,7 @@
                 <form id="new-comment__form" class="new-comment__form">
                     <label class="new-comment__label" for="name">NAME</label>
                     <input class="new-comment__form-name" name="name" id="name" type="text"
-                        placeholder="Enter Your Name">
+                        placeholder="Enter Your Name" required validate>
                     <label class="new-comment__label" for="message">COMMENT</label>
                     <textarea class="new-comment__form-message" form="new-comment__form" wrap="hard" name="message"
                         id="message" placeholder="Add a new comment" rows="2" cols="20"></textarea>
@@ -105,8 +105,9 @@
                 </form>
             </div>
 
-            <div class="comments__list">
+            <div class="comments__list" id="comments">
                 <!-- list of comments created dynamically in main.js -->
+
             </div>
         </section>
     </main>
@@ -180,14 +181,34 @@
             <p>Copyright The Bees Knees <span>©</span> 2021 All Rights Reserved</p>
         </div>
     </footer>
+
+
+
+
+
+    <script src="./scripts/index-page.js"></script>
 </body>
 
 </html>
+<!--
 <script type="application/javascript">
     document.getElementById('submit').addEventListener('click', function () {
-        let name = document.getElementById('name');
-        let time = new Date();
+        let name = document.getElementById('name'); //capture val of name i/p filed
+        let comment = document.getElementById('message'); //capture val of comment in/p filed
+        let time = new Date(); //capture current time
         console.log(name, time);
-        event.preventDefault();
+        event.preventDefault(); //prevents eventlistner default reload behaviour
+        /*
+        let comments = document.getElementById('comments'); //get the list of all comments
+        
+        var newcontent = document.createElement('new_comment'); //create a new div where you will append the new comment
+        newcontent.innerHTML = "<h1>Pulkit</h1>"; //write html property
+
+        while (newcontent.firstChild) { //this loop will append the comment on the top
+        mydiv.appendChild(newcontent.firstChild);
+        }
+        */
     });
+
 </script>
+-->

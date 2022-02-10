@@ -71,6 +71,13 @@ body {
       background-color: #fafafa;
       padding: 16px 0 16px 16px;
       margin-bottom: 24px;
+      font-family: "Avenir";
+      &::placeholder {
+        color: $color-black;
+      }
+      &:focus {
+        color: $color-black;
+      }
     }
     &-message {
       // create an input box with specified top/bottom padding and bottom margin
@@ -84,6 +91,13 @@ body {
       resize: none;
       // set the font-family - doesn't inherit from defaults set
       font-family: "Avenir";
+      &::placeholder {
+        color: $color-black;
+      }
+      &:focus {
+        color: $color-black;
+      }
+
       @include large {
         padding-bottom: 48px;
       }
@@ -117,6 +131,67 @@ body {
       &:hover {
         background-color: black;
       }
+    }
+  }
+}
+.comments__list {
+  // display all the comments on top of each other and center them horizontally
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.comment {
+  // put the avatar beside the details
+  display: flex;
+  border-bottom: 1px solid $color-divider;
+  padding-top: 24px;
+  width: 100%;
+
+  // the comments section takes up a smaller % of the screen for devices >= tablet size
+  @include medium {
+    width: 70%;
+  }
+  @include large {
+    width: 60%;
+  }
+  &__avatar {
+    margin-top: 0;
+    background-color: #e1e1e1;
+    border-radius: 100px;
+    width: 48px;
+    height: 48px;
+  }
+
+  &__details {
+    margin-left: 5%;
+    // make the comments take up 2/3 of the comments container
+    flex-grow: 2;
+    width: 75%;
+    &-header {
+      // display the timestamp and name side by side
+      display: flex;
+      justify-content: space-between;
+      @include medium {
+        // bring the timestamp and name closer togetherr for devices >= tablet size
+        //justify-content: flex-start;
+      }
+    }
+    &-name {
+      font-weight: bold;
+      @include medium {
+        // add more padding to the first column to push the location and venue slightly to the right
+        padding-right: 10px;
+      }
+    }
+    &-timestamp {
+      color: $color-silver;
+    }
+    &-message {
+      padding: 16px 0 24px 0;
+      font-size: 0.875rem;
+      line-height: 1.375rem;
     }
   }
 }

@@ -88,3 +88,118 @@ body {
     }
   }
 }
+//Shows
+.shows {
+  margin-bottom: 40px;
+  font-family: "Avenir";
+
+  //move the section title beside the table for desktops
+  @include large {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 48px;
+  }
+
+  // add right margin to the  Dates label to make it the same size as the dates column of the table
+  &__label:first-child {
+    @include medium {
+      margin-right: 11%;
+    }
+  }
+  // labels to be shown for devices >= tablet size
+  &__labels-tablet {
+    // don't display these labels for mobile devices
+    display: none;
+
+    @include medium {
+      // display these labels for devices >= tablet size
+      display: flex;
+      justify-content: space-between;
+      width: 75%;
+    }
+  }
+  &__title {
+    padding-bottom: 40px;
+
+    @include large {
+      // remove the padding from the top of the title to align it with the table
+      padding-top: 0;
+    }
+  }
+
+  &__list {
+    margin-bottom: 24px;
+    @include large {
+      // make the width of the table smaller to fit beside title on desktop devices
+      width: 79%;
+    }
+  }
+}
+
+/*======================= Show Elements ======================= */
+
+.show {
+  border-bottom: 1px solid $color-mercury;
+  margin-bottom: 16px;
+  // Put the show details in a row for devices >=tablet size
+  @include medium {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__details {
+    @include medium {
+      // have the details take up 3/4 of the container and align in a row for devices >=tablet size
+      width: 75%;
+      display: flex;
+      align-items: baseline;
+    }
+  }
+
+  &__label--mobile {
+    @extend .shows__label;
+    font-weight: 400;
+    //font-size: 0.75rem;
+    //line-height: 1.25rem;
+    //color: $color-silver;
+    // font-weight: 600;
+    // Remove the individual labels for devices >=tablet size
+    @include medium {
+      display: none;
+    }
+  }
+
+  &__date {
+    font-weight: 600;
+    padding-bottom: 24px;
+    //add a margin to the right side of the dates to make the column slightly wider than the other columns
+    margin-right: 11%;
+  }
+  &__venue {
+    padding-bottom: 24px;
+  }
+  &__cta {
+    // create an input button with default sizing and specified height
+    border-radius: 4px;
+    background-color: #323232;
+    color: #ffffff;
+    padding: 16px 0;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 16px;
+    width: 288px;
+    margin-top: 32px;
+
+    @include medium {
+      // modify sizing and margins of the button for devices>= tablet size
+      margin-top: 0;
+      margin-bottom: 16px;
+      width: 160px;
+      // push to the right side of the table
+      align-self: flex-end;
+    }
+    &:hover {
+      background-color: black;
+    }
+  }
+}

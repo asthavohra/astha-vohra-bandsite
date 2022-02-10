@@ -89,7 +89,8 @@ h5,
 .footer,
 .bio,
 .comments,
-.hero__content {
+.hero__content,
+.shows {
   padding: 0 5%;
 
   @include medium {
@@ -141,5 +142,25 @@ h5,
   &:focus {
     outline: none;
     border-color: $color-black;
+  }
+}
+// Show spacing for tablet
+.show li {
+  font-size: 1rem;
+  flex-grow: 1;
+
+  @include medium {
+    width: 30%;
+  }
+}
+
+// Default styling for show labels
+.shows__label {
+  padding-bottom: 16px;
+  @include medium {
+    width: 34%;
+  }
+  @include large {
+    padding-bottom: 32px;
   }
 }

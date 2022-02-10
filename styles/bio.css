@@ -356,14 +356,16 @@ h5,
 .footer,
 .bio,
 .comments,
-.hero__content {
+.hero__content,
+.shows {
   padding: 0 5%;
 }
 @media only screen and (min-width: 768px) {
   .footer,
 .bio,
 .comments,
-.hero__content {
+.hero__content,
+.shows {
     padding: 0 3%;
   }
 }
@@ -371,7 +373,8 @@ h5,
   .footer,
 .bio,
 .comments,
-.hero__content {
+.hero__content,
+.shows {
     padding: 0 12.5%;
   }
 }
@@ -416,6 +419,30 @@ h5,
 .new-comment__form-button:focus {
   outline: none;
   border-color: #323232;
+}
+
+.show li {
+  font-size: 1rem;
+  flex-grow: 1;
+}
+@media only screen and (min-width: 768px) {
+  .show li {
+    width: 30%;
+  }
+}
+
+.shows__label {
+  padding-bottom: 16px;
+}
+@media only screen and (min-width: 768px) {
+  .shows__label {
+    width: 34%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .shows__label {
+    padding-bottom: 32px;
+  }
 }
 
 .footer {

@@ -78,10 +78,10 @@ commentForm.addEventListener("submit", (event) => {
   let nameValue = name.value;
   if (nameValue === null || nameValue === "") {
     name.classList.add("new-comment__form-error");
-
     return;
+  } else {
+    name.classList.remove("new-comment__form-error");
   }
-
   let today = new Date();
   // create a new comment object from the values submitted
   let newComment = {

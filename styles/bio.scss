@@ -63,7 +63,6 @@ body {
     margin-left: 5%;
     // make the input elements take up 2/3 of the new-comment container
     flex-grow: 2;
-
     &-name {
       // create an input box with specified top/bottom padding and bottom margin
       border-radius: 4px;
@@ -78,9 +77,9 @@ body {
       &:focus {
         color: $color-black;
       }
-    }
-    &-error {
-      border: 1px solid #d22d2d;
+      &-error {
+        border: 1px solid red;
+      }
     }
     &-message {
       // create an input box with specified top/bottom padding and bottom margin

@@ -577,7 +577,7 @@ body {
   border-bottom: 0.0625rem solid #e1e1e1;
   padding: 16px;
 }
-.show:hover {
+.show:focus {
   background-color: #fafafa;
 }
 @media only screen and (min-width: 768px) {
@@ -594,6 +594,9 @@ body {
     display: flex;
     align-items: baseline;
   }
+}
+.show__selected {
+  background-color: #e1e1e1;
 }
 .show__label--mobile {
   font-weight: 400;
@@ -617,8 +620,8 @@ body {
   color: #ffffff;
   border: none;
   cursor: pointer;
+  margin-bottom: 1rem;
   width: 100%;
-  margin-top: 1rem;
   font-family: "Avenir";
   height: 40px;
 }

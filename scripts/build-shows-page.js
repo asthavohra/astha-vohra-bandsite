@@ -58,12 +58,26 @@ labels.forEach((label) => {
 showsList.appendChild(showsTabletLabels);
 
 //Function displayShow==> Takes in a show object, builds the html structure and displays it
+function markActive(e) {
+  var container = document.querySelector(".shows__list");
+  var shows = container.querySelectorAll("div");
+  shows.forEach(function (el) {
+    el.classList.remove("show__selected");
+  });
+  if (e.target.localName === "li") {
+    e.target.parentElement.parentElement.classList.add("show__selected");
+  } else if (e.target.localName === "ul") {
+    e.target.parentElement.classList.add("show__selected");
+  } else {
+    e.target.classList.add("show__selected");
+  }
+}
 
 const displayShow = (show) => {
   // create a container for the show
   let showContainer = document.createElement("div");
   showContainer.classList.add("show");
-  showContainer.setAttribute("onclick", "select(event)");
+  showContainer.setAttribute("onclick", "markActive(event)");
 
   // create a list for the show details
   let showDetails = document.createElement("ul");

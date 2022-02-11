@@ -68,24 +68,25 @@ comments.forEach((comment) => {
   displayComment(comment);
 });
 
+let nameField = document.getElementById("name");
 let commentForm = document.querySelector(".new-comment__form");
 // submit the form values using an event listener
 commentForm.addEventListener("submit", (event) => {
   // prevents the page from reloading upon submit
   event.preventDefault();
   //checks if the name is null or empty and adds a new class to the element which adds new property
-  let name = document.getElementById("name");
-  let nameValue = name.value;
+
+  let nameValue = nameField.value;
   if (nameValue === null || nameValue === "") {
-    name.classList.add("new-comment__form-error");
+    nameField.classList.add("new-comment__form-name-error");
     return;
   } else {
-    name.classList.remove("new-comment__form-error");
+    nameField.classList.remove("new-comment__form-name-error");
   }
   let today = new Date();
   // create a new comment object from the values submitted
   let newComment = {
-    name: event.target.name.value,
+    name: nameValue,
     timeStamp:
       today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear(),
     message: event.target.message.value,
@@ -108,4 +109,11 @@ commentForm.addEventListener("submit", (event) => {
   // Reset the input boxes with a blank value and the placeholder
   event.target.name.value = "";
   event.target.message.value = "";
+});
+
+nameField.addEventListener("keypress", (event) => {
+  let nameValue = nameField.value;
+  if (nameValue !== null || nameValue !== "") {
+    nameField.classList.remove("new-comment__form-name-error");
+  }
 });

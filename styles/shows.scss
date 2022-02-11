@@ -144,7 +144,7 @@ body {
   padding: 16px;
 
   // Put the show details in a row for devices >=tablet size
-  &:hover {
+  &:focus {
     background-color: #fafafa;
   }
   @include medium {
@@ -161,6 +161,9 @@ body {
       align-items: baseline;
       //padding: 16px;
     }
+  }
+  &__selected {
+    background-color: #e1e1e1;
   }
 
   &__label--mobile {
@@ -193,9 +196,9 @@ body {
     //padding: 1rem 0;
     border: none;
     cursor: pointer;
-    //margin-bottom: 1rem;
+    margin-bottom: 1rem;
     width: 100%;
-    margin-top: 1rem;
+    // margin-top: 1rem;
     font-family: "Avenir";
     height: 40px;
 

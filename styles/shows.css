@@ -598,6 +598,9 @@ body {
 .show__selected {
   background-color: #e1e1e1;
 }
+.show:not(.show__selected):hover {
+  background-color: #fafafa;
+}
 .show__label--mobile {
   font-weight: 400;
 }

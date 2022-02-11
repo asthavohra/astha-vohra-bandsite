@@ -80,6 +80,7 @@ const displayShow = (show) => {
   showContainer.setAttribute("onclick", "markActive(event)");
 
   // create a list for the show details
+
   let showDetails = document.createElement("ul");
   showDetails.classList.add("show__details");
 

@@ -47,7 +47,7 @@ labels.forEach((label) => {
   let tabletLabel = document.createElement("li");
   tabletLabel.classList.add("shows__label");
   if (label == "DATE") {
-    tabletLabel.innerText = label + "S";
+    tabletLabel.innerText = label;
   } else {
     tabletLabel.innerText = label;
   }
@@ -58,10 +58,12 @@ labels.forEach((label) => {
 showsList.appendChild(showsTabletLabels);
 
 //Function displayShow==> Takes in a show object, builds the html structure and displays it
+
 const displayShow = (show) => {
   // create a container for the show
   let showContainer = document.createElement("div");
   showContainer.classList.add("show");
+  showContainer.setAttribute("onclick", "select(event)");
 
   // create a list for the show details
   let showDetails = document.createElement("ul");

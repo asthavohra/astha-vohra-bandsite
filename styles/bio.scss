@@ -79,6 +79,9 @@ body {
         color: $color-black;
       }
     }
+    &-error {
+      border: 1px solid #d22d2d;
+    }
     &-message {
       // create an input box with specified top/bottom padding and bottom margin
       border-radius: 4px;

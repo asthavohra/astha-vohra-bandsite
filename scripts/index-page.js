@@ -73,6 +73,15 @@ let commentForm = document.querySelector(".new-comment__form");
 commentForm.addEventListener("submit", (event) => {
   // prevents the page from reloading upon submit
   event.preventDefault();
+  //checks if the name is null or empty and adds a new class to the element which adds new property
+  let name = document.getElementById("name");
+  let nameValue = name.value;
+  if (nameValue === null || nameValue === "") {
+    name.classList.add("new-comment__form-error");
+
+    return;
+  }
+
   let today = new Date();
   // create a new comment object from the values submitted
   let newComment = {

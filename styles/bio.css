@@ -682,6 +682,9 @@ body {
 .new-comment__form-name:focus {
   color: #323232;
 }
+.new-comment__form-error {
+  border: 1px solid #d22d2d;
+}
 .new-comment__form-message {
   border-radius: 4px;
   border: 2px solid #e1e1e1;

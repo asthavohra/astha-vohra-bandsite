@@ -36,7 +36,7 @@ body {
       font-size: 1.5rem;
       line-height: 2rem;
       width: 18rem;
-      color: #ffffff;
+      color: $color-white;
       margin-bottom: 3rem;
       margin-top: 3rem;
 
@@ -44,7 +44,7 @@ body {
         font-size: 3.2rem;
         line-height: 4rem;
         width: 31.25rem;
-        color: #ffffff;
+        color: $color-white;
         margin-bottom: 3rem;
         margin-top: 3rem;
       }
@@ -52,7 +52,7 @@ body {
         font-size: 3.14rem;
         line-height: 4rem;
         width: 35.625rem;
-        color: #ffffff;
+        color: $color-white;
         margin-bottom: 3rem;
         margin-top: 3rem;
       }
@@ -145,7 +145,7 @@ body {
 
   // Put the show details in a row for devices >=tablet size
   &:focus {
-    background-color: #fafafa;
+    background-color: $color-alabaster;
   }
   @include medium {
     display: flex;
@@ -163,10 +163,10 @@ body {
     }
   }
   &__selected {
-    background-color: #e1e1e1;
+    background-color: $color-mercury;
   }
   &:not(&__selected):hover {
-    background-color: #fafafa;
+    background-color: $color-alabaster;
   }
 
   &__label--mobile {
@@ -190,8 +190,8 @@ body {
   &__cta {
     // create an input button with default sizing and specified height
     border-radius: 0.25rem;
-    background-color: #323232;
-    color: #ffffff;
+    background-color: $color-black;
+    color: $color-white;
     //padding: 1rem 0;
     border: none;
     cursor: pointer;

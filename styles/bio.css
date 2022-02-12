@@ -625,17 +625,17 @@ body {
   font-family: "Avenir";
 }
 .comments__title {
-  padding-bottom: 40px;
+  padding-bottom: 2.5rem;
 }
 @media only screen and (min-width: 1200px) {
   .comments__title {
-    padding: 48px 0 56px 0;
+    padding: 3rem 0 3.5rem 0;
   }
 }
 
 .new-comment {
   display: flex;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 0.0625rem solid #e1e1e1;
 }
 @media only screen and (min-width: 768px) {
   .new-comment {
@@ -651,11 +651,24 @@ body {
 .new-comment__avatar {
   background-image: url("../assets/images/Mohan-muruge.jpg");
   background-size: cover;
-  margin-top: 20px;
+  margin-top: 2.5rem;
   background-color: #e1e1e1;
-  border-radius: 100px;
-  width: 48px;
-  height: 48px;
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+@media only screen and (min-width: 768px) {
+  .new-comment__avatar {
+    margin-top: 3.5rem;
+    height: 3rem;
+    width: 3rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .new-comment__avatar {
+    height: 3rem;
+    width: 3rem;
+  }
 }
 .new-comment__form {
   display: flex;
@@ -666,20 +679,20 @@ body {
 }
 @media only screen and (min-width: 768px) {
   .new-comment__form {
-    padding: 16px;
+    padding: 1rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   .new-comment__form {
-    padding: 16px;
+    padding: 1rem;
   }
 }
 .new-comment__form-name {
-  border-radius: 4px;
-  border: 2px solid #e1e1e1;
+  border-radius: 0.25rem;
+  border: 0.125rem solid #e1e1e1;
   background-color: #fafafa;
-  padding: 12px;
-  height: 40px;
+  padding: 0.75rem;
+  height: 2.5rem;
   font-family: "Avenir";
 }
 .new-comment__form-name::-moz-placeholder {
@@ -694,15 +707,18 @@ body {
 .new-comment__form-name:focus {
   color: #323232;
 }
+.new-comment__form-name-error {
+  border: 0.0625rem solid #d22d2d;
+}
 .new-comment__form-message {
-  border-radius: 4px;
-  border: 2px solid #e1e1e1;
+  border-radius: 0.25rem;
+  border: 0.125rem solid #e1e1e1;
   background-color: #fafafa;
-  padding: 12px;
-  margin-bottom: 24px;
+  padding: 0.75rem;
+  margin-bottom: 1.5rem;
   resize: none;
   font-family: "Avenir";
-  height: 70px;
+  height: 4.375rem;
 }
 .new-comment__form-message::-moz-placeholder {
   color: #323232;
@@ -718,32 +734,32 @@ body {
 }
 @media only screen and (min-width: 1200px) {
   .new-comment__form-message {
-    padding-bottom: 48px;
+    padding-bottom: 3rem;
   }
 }
 .new-comment__form-button {
   align-self: flex-end;
-  border-radius: 4px;
+  border-radius: 0.25rem;
   background-color: #323232;
   color: #ffffff;
-  padding: 12px;
+  padding: 0.75rem;
   border: none;
   cursor: pointer;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
   width: 100%;
-  height: 40px;
+  height: 2.5rem;
 }
 @media only screen and (min-width: 768px) {
   .new-comment__form-button {
-    margin-bottom: 24px;
-    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    border-radius: 0.25rem;
     background-color: #323232;
     color: #ffffff;
-    padding: 0 32px;
+    padding: 0 2rem;
     border: none;
     cursor: pointer;
-    margin-bottom: 16px;
-    width: 160px;
+    margin-bottom: 1rem;
+    width: 10rem;
   }
 }
 .new-comment__form-button:hover {
@@ -754,13 +770,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .comment {
   display: flex;
-  border-bottom: 1px solid #e1e1e1;
-  padding-top: 24px;
+  border-bottom: 0.0625rem solid #e1e1e1;
+  padding-top: 1.5rem;
   width: 100%;
 }
 @media only screen and (min-width: 768px) {
@@ -776,9 +792,15 @@ body {
 .comment__avatar {
   margin-top: 0;
   background-color: #e1e1e1;
-  border-radius: 100px;
-  width: 48px;
-  height: 48px;
+  border-radius: 50%;
+  width: 2.25rem;
+  height: 2.25rem;
+}
+@media only screen and (min-width: 768px) {
+  .comment__avatar {
+    width: 3rem;
+    height: 3rem;
+  }
 }
 .comment__details {
   margin-left: 5%;
@@ -794,14 +816,14 @@ body {
 }
 @media only screen and (min-width: 768px) {
   .comment__details-name {
-    padding-right: 10px;
+    padding-right: 0.625rem;
   }
 }
 .comment__details-timestamp {
   color: #afafaf;
 }
 .comment__details-message {
-  padding: 16px 0 24px 0;
+  padding: 1rem 0 1.5rem 0;
   font-size: 0.875rem;
   line-height: 1.375rem;
 }/*# sourceMappingURL=bio.css.map */

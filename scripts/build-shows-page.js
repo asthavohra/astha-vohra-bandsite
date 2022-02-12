@@ -39,7 +39,7 @@ let classes = ["show__date", "show__venue", "show__location"];
 //Get the container on the page that a show will be appended to
 let showsList = document.querySelector(".shows__list");
 
-// create the tablet labels that show on devices >= tablet size
+// create the tablet labels that show on medium devices
 let showsTabletLabels = document.createElement("ul");
 showsTabletLabels.classList.add("shows__labels-tablet");
 
@@ -57,7 +57,7 @@ labels.forEach((label) => {
 // add the tablet labels to the shows list container
 showsList.appendChild(showsTabletLabels);
 
-//Function displayShow==> Takes in a show object, builds the html structure and displays it
+//function markActive changes the color of the rows in active state onclick event
 function markActive(e) {
   var container = document.querySelector(".shows__list");
   var shows = container.querySelectorAll("div");
@@ -72,7 +72,7 @@ function markActive(e) {
     e.target.classList.add("show__selected");
   }
 }
-
+//Function displayShow==> Takes in a show object, builds the html structure and displays it
 const displayShow = (show) => {
   // create a container for the show
   let showContainer = document.createElement("div");

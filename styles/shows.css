@@ -223,6 +223,7 @@ h5,
   line-height: 1.25rem;
   color: #afafaf;
   font-weight: 600;
+  margin: 4px;
 }
 
 .footer,
@@ -552,7 +553,7 @@ body {
     display: flex;
     justify-content: space-between;
     width: 75%;
-    padding: 24px 18px;
+    padding: 1.5rem 1.125rem;
   }
 }
 .shows__title {
@@ -575,7 +576,7 @@ body {
 /*======================= Show Elements ======================= */
 .show {
   border-bottom: 0.0625rem solid #e1e1e1;
-  padding: 16px;
+  padding: 1rem;
 }
 .show:focus {
   background-color: #fafafa;
@@ -583,9 +584,8 @@ body {
 @media only screen and (min-width: 768px) {
   .show {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 24px 18px;
+    padding: 1.5rem 1.125rem;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -593,6 +593,7 @@ body {
     width: 75%;
     display: flex;
     align-items: baseline;
+    padding-top: 1.875rem;
   }
 }
 .show__selected {
@@ -623,10 +624,10 @@ body {
   color: #ffffff;
   border: none;
   cursor: pointer;
-  margin-bottom: 1rem;
+  margin: 1rem 0;
   width: 100%;
   font-family: "Avenir";
-  height: 40px;
+  height: 2.5rem;
 }
 @media only screen and (min-width: 768px) {
   .show__cta {

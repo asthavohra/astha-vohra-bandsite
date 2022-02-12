@@ -116,7 +116,7 @@ body {
       display: flex;
       justify-content: space-between;
       width: 75%;
-      padding: 24px 18px;
+      padding: 1.5rem 1.125rem;
     }
   }
   &__title {
@@ -141,7 +141,7 @@ body {
 
 .show {
   border-bottom: 0.0625rem solid $color-mercury;
-  padding: 16px;
+  padding: 1rem;
 
   // Put the show details in a row for devices >=tablet size
   &:focus {
@@ -149,17 +149,17 @@ body {
   }
   @include medium {
     display: flex;
-    justify-content: space-between;
+    //justify-content: space-between;
     align-items: center;
-    padding: 24px 18px;
+    padding: 1.5rem 1.125rem;
   }
   &__details {
     @include medium {
-      // have the details take up 3/4 of the container and align in a row for devices >=tablet size
+      // have the details take up 3/4 of the container and align in a row for medium devices
       width: 75%;
       display: flex;
       align-items: baseline;
-      //padding: 16px;
+      padding-top: 1.875rem;
     }
   }
   &__selected {
@@ -172,10 +172,6 @@ body {
   &__label--mobile {
     @extend .shows__label;
     font-weight: 400;
-    //font-size: 0.75rem;
-    //line-height: 1.25rem;
-    //color: $color-silver;
-    // font-weight: 600;
     // Remove the individual labels for devices >=tablet size
     @include medium {
       display: none;
@@ -199,11 +195,11 @@ body {
     //padding: 1rem 0;
     border: none;
     cursor: pointer;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     width: 100%;
     // margin-top: 1rem;
     font-family: "Avenir";
-    height: 40px;
+    height: 2.5rem;
 
     @include medium {
       // modify sizing and margins of the button for devices>= tablet size

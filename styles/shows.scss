@@ -172,6 +172,7 @@ body {
   &__label--mobile {
     @extend .shows__label;
     font-weight: 400;
+    text-transform: uppercase;
     // Remove the individual labels for devices >=tablet size
     @include medium {
       display: none;

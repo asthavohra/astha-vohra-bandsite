@@ -203,11 +203,8 @@ body {
     height: 2.5rem;
 
     @include medium {
-      // modify sizing and margins of the button for devices>= tablet size
-      //margin-top: 0;
-      //margin-bottom: 1rem;
       width: 9.375rem;
-      // push to the right side of the table
+      // push to the right side of the tablet
       align-self: flex-end;
       padding: 0 2rem;
     }

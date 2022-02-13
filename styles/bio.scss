@@ -37,7 +37,7 @@ body {
   display: flex;
   border-bottom: 0.0625rem solid $color-divider;
 
-  // adjust the width of the section and center it on the page for devices >= tablet size
+  // adjust the width of the section and center it on the page for medium devices
   @include medium {
     width: 70%;
     align-self: center;
@@ -108,7 +108,6 @@ body {
       margin-bottom: 1.5rem;
       // remove the ability to resize the textarea
       resize: none;
-      // set the font-family - doesn't inherit from defaults set
       font-family: "Avenir";
       height: 4.375rem;
       &::placeholder {
@@ -134,7 +133,6 @@ body {
       margin-bottom: 0.75rem;
 
       // create an input button with default styling of a specific size
-      //width: 225.61px;
       width: 100%;
       height: 2.5rem;
 
@@ -171,7 +169,7 @@ body {
   padding-top: 1.5rem;
   width: 100%;
 
-  // the comments section takes up a smaller % of the screen for devices >= tablet size
+  // the comments section takes up a smaller % of the screen for medium devices
   @include medium {
     width: 70%;
   }
@@ -199,10 +197,6 @@ body {
       // display the timestamp and name side by side
       display: flex;
       justify-content: space-between;
-      @include medium {
-        // bring the timestamp and name closer togetherr for devices >= tablet size
-        //justify-content: flex-start;
-      }
     }
     &-name {
       font-weight: bold;

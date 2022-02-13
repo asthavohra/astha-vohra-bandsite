@@ -21,7 +21,7 @@
                     <a class="header__nav-menu-item-link" id="active" href="./index.html">Biography</a>
                 </li>
                 <li class="header__nav-menu-item">
-                    <a class="header__nav-menu-item-link">Shows</a>
+                    <a class="header__nav-menu-item-link" href="./pages/shows.html">Shows</a>
                 </li>
             </ul>
         </nav>
@@ -88,6 +88,30 @@
                 <img class="gallery__images-item" src="./assets/images/Photo-gallery-9.jpg" alt="Concert-picture 9" />
             </div>
         </section>
+        <!-- Comments Section -->
+        <section class="comments">
+            <h2 class="section__title comments__title">Join the Conversation</h2>
+            <div class="new-comment">
+                <div class="new-comment__avatar"></div>
+                <!-- form to submit new comments -->
+                <form id="new-comment__form" class="new-comment__form">
+                    <label class="new-comment__label" for="name">NAME</label>
+                    <input class="new-comment__form-name" name="name" id="name" type="text"
+                        placeholder="Enter Your Name" />
+                    <label class="new-comment__label" for="message">COMMENT</label>
+                    <textarea class="new-comment__form-message" form="new-comment__form" wrap="hard" name="message"
+                        id="message" placeholder="Add a new comment" rows="2" cols="20"></textarea>
+                    <button class="new-comment__form-button" id="submit">
+                        COMMENT
+                    </button>
+                </form>
+            </div>
+
+            <div class="comments__list" id="comments">
+                <!-- list of comments created dynamically in main.js -->
+                <img id="comment_loader" src="./assets/images/spinner.gif" alt="Loading..." />
+            </div>
+        </section>
     </main>
     <!-- Page Footer -->
     <footer class="footer">
@@ -97,15 +121,15 @@
             <div class="footer__top--left">
                 <h2 class="section__title footer__top-title">Get In Touch</h2>
                 <div class="footer__top-social">
-                    <a href="https://www.instagram.com">
-                        <img class="footer__top-social-icon" src="./assets/icons/SVG/Icon-instagram.svg"
-                            alt="instagram icon" class="footer__social-icon" /></a>
-                    <a href="https://www.facebook.com">
-                        <img class="footer__top-social-icon" src="./assets/icons/SVG/Icon-facebook.svg"
-                            alt="facebook icon" class="footer__social-icon" /></a>
-                    <a href="https://www.twitter.com"><img class="footer__top-social-icon"
-                            href="https://www.twitter.com" src="./assets/icons/SVG/Icon-twitter.svg" alt="twitter icon"
-                            class="footer__social-icon" /></a>
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img class="footer__top-social-icon footer__social-icon"
+                            src="./assets/icons/SVG/Icon-instagram.svg" alt="instagram icon" /></a>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img class="footer__top-social-icon footer__social-icon"
+                            src="./assets/icons/SVG/Icon-facebook.svg" alt="facebook icon" /></a>
+                    <a href="https://www.twitter.com" target="_blank"><img
+                            class="footer__top-social-icon footer__social-icon"
+                            src="./assets/icons/SVG/Icon-twitter.svg" alt="twitter icon" /></a>
                 </div>
             </div>
             <a href="./index.html"><img class="footer__top-logo" src="./assets/logo/Logo-bandsite.svg"
@@ -159,6 +183,10 @@
             <p>Copyright The Bees Knees <span>©</span> 2021 All Rights Reserved</p>
         </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.6.7/jquery.timeago.min.js"
+        type="text/javascript"></script>
+    <script src="./scripts/index-page.js"></script>
 </body>
 
 </html>

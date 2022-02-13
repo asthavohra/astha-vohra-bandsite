@@ -1,5 +1,5 @@
-@use "./partials/breakpoints";
-@use "./partials/colors";
+@use "./partials/breakpoints" as *;
+@use "./partials/colors" as *;
 @use "./partials/fonts";
 @use "./partials/navbar";
 @use "./partials/hero";
@@ -17,4 +17,201 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+.comments {
+  display: flex;
+  flex-direction: column;
+  font-family: "Avenir";
+  &__title {
+    padding-bottom: 2.5rem;
+
+    @include large {
+      padding: 3rem 0 3.5rem 0;
+    }
+  }
+}
+
+// section for submitting a new comment
+.new-comment {
+  // put the avatar and the form in a row
+  display: flex;
+  border-bottom: 0.0625rem solid $color-divider;
+
+  // adjust the width of the section and center it on the page for medium devices
+  @include medium {
+    width: 70%;
+    align-self: center;
+  }
+  @include large {
+    width: 60%;
+  }
+
+  &__avatar {
+    background-image: url("../assets/images/Mohan-muruge.jpg");
+    background-size: cover;
+    margin-top: 2.5rem;
+    background-color: $color-divider;
+    border-radius: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    @include medium {
+      margin-top: 3.5rem;
+      height: 3rem;
+      width: 3rem;
+    }
+    @include large {
+      height: 3rem;
+      width: 3rem;
+    }
+  }
+
+  &__form {
+    // put the input elements in the form on top of one another
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    // make the input elements take up 2/3 of the new-comment container
+    flex-grow: 2;
+    width: 100%;
+    @include medium {
+      padding: 1rem;
+    }
+    @include large {
+      padding: 1rem;
+    }
+
+    &-name {
+      // create an input box with specified top/bottom padding and bottom margin
+      border-radius: 0.25rem;
+      border: 0.125rem solid $color-mercury;
+      background-color: $color-alabaster;
+      padding: 0.75rem;
+      height: 2.5rem;
+      //margin-bottom: 24px;
+      font-family: "Avenir";
+      &::placeholder {
+        color: $color-black;
+      }
+      &:focus {
+        color: $color-black;
+      }
+      &-error {
+        border: 0.0625rem solid $color-red;
+      }
+    }
+    &-message {
+      // create an input box with specified top/bottom padding and bottom margin
+      border-radius: 0.25rem;
+      border: 0.125rem solid $color-mercury;
+      background-color: $color-alabaster;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      // remove the ability to resize the textarea
+      resize: none;
+      font-family: "Avenir";
+      height: 4.375rem;
+      &::placeholder {
+        color: $color-black;
+      }
+      &:focus {
+        color: $color-black;
+      }
+
+      @include large {
+        padding-bottom: 3rem;
+      }
+    }
+    &-button {
+      // push the button to right side of the container
+      align-self: flex-end;
+      border-radius: 0.25rem;
+      background-color: $color-black;
+      color: $color-white;
+      padding: 0.75rem;
+      border: none;
+      cursor: pointer;
+      margin-bottom: 0.75rem;
+
+      // create an input button with default styling of a specific size
+      width: 100%;
+      height: 2.5rem;
+
+      @include medium {
+        margin-bottom: 1.5rem;
+        // increase the size of the button for medium devices
+        border-radius: 0.25rem;
+        background-color: $color-black;
+        color: $color-white;
+        padding: 0 2rem;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 1rem;
+        width: 10rem;
+      }
+      &:hover {
+        background-color: black;
+      }
+    }
+  }
+}
+.comments__list {
+  // display all the comments on top of each other and center them horizontally
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.comment {
+  // put the avatar beside the details
+  display: flex;
+  border-bottom: 0.0625rem solid $color-divider;
+  padding-top: 1.5rem;
+  width: 100%;
+
+  // the comments section takes up a smaller % of the screen for medium devices
+  @include medium {
+    width: 70%;
+  }
+  @include large {
+    width: 60%;
+  }
+  &__avatar {
+    margin-top: 0;
+    background-color: $color-divider;
+    border-radius: 50%;
+    width: 2.25rem;
+    height: 2.25rem;
+    @include medium {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &__details {
+    margin-left: 5%;
+    // make the comments take up 2/3 of the comments container
+    flex-grow: 2;
+    width: 75%;
+    &-header {
+      // display the timestamp and name side by side
+      display: flex;
+      justify-content: space-between;
+    }
+    &-name {
+      font-weight: bold;
+      @include medium {
+        // add more padding to the first column to push the location and venue slightly to the right
+        padding-right: 0.625rem;
+      }
+    }
+    &-timestamp {
+      color: $color-silver;
+    }
+    &-message {
+      padding: 1rem 0 1.5rem 0;
+      font-size: 0.875rem;
+      line-height: 1.375rem;
+    }
+  }
 }

@@ -123,135 +123,6 @@
     border-bottom: 0.4125rem solid transparent;
   }
 }
-main {
-  padding: unset;
-}
-
-.hero {
-  height: 11.4375rem;
-  width: 100%;
-  background-image: url("../assets/images/hero-bio.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: flex;
-  justify-content: left;
-  align-content: center;
-}
-.hero__opacity {
-  background-color: rgba(0, 0, 0, 0.5);
-  height: inherit;
-  width: inherit;
-  display: flex;
-  align-items: center;
-}
-.hero__title {
-  font-family: "Avenir";
-  color: #ffffff;
-  font-size: 1.5rem;
-  width: 13rem;
-  line-height: 2rem;
-  padding-left: 1rem;
-  font-weight: 700;
-}
-
-@media only screen and (min-width: 768px) {
-  .hero {
-    height: 25rem;
-  }
-  .hero__title {
-    font-size: 3.75rem;
-    line-height: 4.25rem;
-    width: 32rem;
-    padding-left: 1.5rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .hero {
-    height: 41.875rem;
-  }
-  .hero__title {
-    padding-left: 11.25rem;
-  }
-}
-.bio {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-family: "Avenir";
-}
-@media only screen and (min-width: 1200px) {
-  .bio__content {
-    padding: 0 8.5%;
-  }
-}
-.bio__image {
-  margin-bottom: 24px;
-  min-width: 100%;
-  max-width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .bio__image {
-    margin-bottom: 32px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .bio__image {
-    margin: 0 auto 48px auto;
-  }
-}
-.bio__quote {
-  padding-bottom: 32px;
-}
-@media only screen and (min-width: 1200px) {
-  .bio__quote {
-    width: 90%;
-  }
-}
-.bio__signature {
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding-bottom: 40px;
-}
-@media only screen and (min-width: 768px) {
-  .bio__signature {
-    font-size: 1rem;
-  }
-}
-.bio__name {
-  padding-bottom: 24px;
-}
-@media only screen and (min-width: 1200px) {
-  .bio__name {
-    padding-bottom: 32px;
-  }
-}
-.bio__story {
-  padding-bottom: 16px;
-}
-@media only screen and (min-width: 768px) {
-  .bio__story {
-    padding-bottom: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-}
-.bio__story-text {
-  padding-bottom: 24px;
-}
-@media only screen and (min-width: 768px) {
-  .bio__story-text {
-    width: 47%;
-    padding-bottom: 40px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .bio__story-text {
-    padding-bottom: 48px;
-  }
-}
-
 ul {
   list-style-type: none;
 }
@@ -346,7 +217,8 @@ p {
 
 h5,
 .new-comment__label,
-.shows__label {
+.shows__label,
+.show__label--mobile {
   font-size: 0.75rem;
   line-height: 1.25rem;
   color: #afafaf;
@@ -432,16 +304,16 @@ h5,
   }
 }
 
-.shows__label {
+.shows__label, .show__label--mobile {
   padding-bottom: 1rem;
 }
 @media only screen and (min-width: 768px) {
-  .shows__label {
+  .shows__label, .show__label--mobile {
     width: 34%;
   }
 }
 @media only screen and (min-width: 1200px) {
-  .shows__label {
+  .shows__label, .show__label--mobile {
     padding-bottom: 2rem;
   }
 }
@@ -546,67 +418,27 @@ h5,
   }
 }
 
-.gallery {
-  background-color: #fafafa;
-  padding: 0 1rem;
-}
-.gallery__title {
-  font-family: "Avenir";
-  font-size: 1.5rem;
-  line-height: 2rem;
-  padding: 2rem 0 1rem 0;
-  font-weight: 700;
-}
-.gallery__images {
+.hero {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  padding-bottom: 1.5rem;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
 }
-.gallery__images-item {
-  height: 50.625vw;
+.hero::before {
+  content: "";
+  position: absolute;
+  height: 100%;
   width: 100%;
-  padding: 0.5rem 0;
-  filter: grayscale(1);
+  background-color: #323232;
+  opacity: 0.5;
 }
-.gallery__images-item:hover {
-  filter: none;
+.hero__content {
+  color: #ffffff;
+  width: 100%;
+  z-index: 2;
 }
 
-@media only screen and (min-width: 768px) {
-  .gallery {
-    padding: 0 1.5rem;
-  }
-  .gallery__title {
-    font-size: 2.25rem;
-    line-height: 2.75rem;
-    padding-bottom: 2rem;
-  }
-  .gallery__images {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .gallery__images-item {
-    height: 16.40625vw;
-    width: calc(33% - 12px);
-    padding: 0 0 1.5rem 0;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .gallery {
-    padding: 0 11.25rem;
-  }
-  .gallery__title {
-    padding: 3rem 0 4rem 0;
-  }
-  .gallery__images {
-    padding-bottom: 16px;
-  }
-  .gallery__images-item {
-    height: 11.7363vw;
-  }
-}
 * {
   margin: 0;
   padding: 0;
@@ -619,211 +451,192 @@ body {
   padding: 0;
 }
 
-.comments {
-  display: flex;
-  flex-direction: column;
+.hero {
+  background-image: url("../assets/images/hero-shows.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 150vw;
+  max-height: 40rem;
   font-family: "Avenir";
 }
-.comments__title {
+@media only screen and (min-width: 768px) {
+  .hero {
+    height: 87vw;
+    max-height: 850vw;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .hero {
+    height: 47vw;
+  }
+}
+.hero__content-title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  width: 18rem;
+  color: #ffffff;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
+}
+@media only screen and (min-width: 768px) {
+  .hero__content-title {
+    font-size: 3.2rem;
+    line-height: 4rem;
+    width: 31.25rem;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .hero__content-title {
+    font-size: 3.14rem;
+    line-height: 4rem;
+    width: 35.625rem;
+    color: #ffffff;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .hero__content-bottom {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+.hero__content-song {
+  border-radius: 3.125rem;
+  width: 100%;
+  max-width: 24.187rem;
+  height: 7.5rem;
+}
+@media only screen and (min-width: 768px) {
+  .hero__content-song {
+    width: 27.0625rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .hero__content-song {
+    padding-left: 4rem;
+    padding-bottom: 4rem;
+    width: 50%;
+    max-width: 30.625rem;
+    height: 7.875rem;
+  }
+}
+.hero__content-iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.shows {
+  margin-bottom: 2.5rem;
+  font-family: "Avenir";
+}
+@media only screen and (min-width: 1200px) {
+  .shows {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3rem;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .shows__label:first-child, .show__label--mobile:first-child {
+    margin-right: 11%;
+  }
+}
+.shows__labels-tablet {
+  display: none;
+}
+@media only screen and (min-width: 768px) {
+  .shows__labels-tablet {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    padding: 1.5rem 1.125rem;
+  }
+}
+.shows__title {
   padding-bottom: 2.5rem;
 }
 @media only screen and (min-width: 1200px) {
-  .comments__title {
-    padding: 3rem 0 3.5rem 0;
+  .shows__title {
+    padding-top: 0;
+  }
+}
+.shows__list {
+  margin-bottom: 1.5rem;
+}
+@media only screen and (min-width: 1200px) {
+  .shows__list {
+    width: 79%;
   }
 }
 
-.new-comment {
-  display: flex;
+/*======================= Show Elements ======================= */
+.show {
   border-bottom: 0.0625rem solid #e1e1e1;
+  padding: 1rem;
+}
+.show:focus {
+  background-color: #fafafa;
 }
 @media only screen and (min-width: 768px) {
-  .new-comment {
-    width: 70%;
-    align-self: center;
+  .show {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 1.125rem;
   }
 }
-@media only screen and (min-width: 1200px) {
-  .new-comment {
-    width: 60%;
+@media only screen and (min-width: 768px) {
+  .show__details {
+    width: 75%;
+    display: flex;
+    align-items: baseline;
+    padding-top: 1.875rem;
   }
 }
-.new-comment__avatar {
-  background-image: url("../assets/images/Mohan-muruge.jpg");
-  background-size: cover;
-  margin-top: 2.5rem;
+.show__selected {
   background-color: #e1e1e1;
-  border-radius: 50%;
-  width: 2.25rem;
-  height: 2.25rem;
+}
+.show:not(.show__selected):hover {
+  background-color: #fafafa;
+}
+.show__label--mobile {
+  font-weight: 400;
+  text-transform: uppercase;
 }
 @media only screen and (min-width: 768px) {
-  .new-comment__avatar {
-    margin-top: 3.5rem;
-    height: 3rem;
-    width: 3rem;
+  .show__label--mobile {
+    display: none;
   }
 }
-@media only screen and (min-width: 1200px) {
-  .new-comment__avatar {
-    height: 3rem;
-    width: 3rem;
-  }
+.show__date {
+  font-weight: 600;
+  padding-bottom: 1.5rem;
+  margin-right: 11%;
 }
-.new-comment__form {
-  display: flex;
-  flex-direction: column;
-  margin-left: 5%;
-  flex-grow: 2;
-  width: 100%;
+.show__venue {
+  padding-bottom: 1.5rem;
 }
-@media only screen and (min-width: 768px) {
-  .new-comment__form {
-    padding: 1rem;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .new-comment__form {
-    padding: 1rem;
-  }
-}
-.new-comment__form-name {
-  border-radius: 0.25rem;
-  border: 0.125rem solid #e1e1e1;
-  background-color: #fafafa;
-  padding: 0.75rem;
-  height: 2.5rem;
-  font-family: "Avenir";
-}
-.new-comment__form-name::-moz-placeholder {
-  color: #323232;
-}
-.new-comment__form-name:-ms-input-placeholder {
-  color: #323232;
-}
-.new-comment__form-name::placeholder {
-  color: #323232;
-}
-.new-comment__form-name:focus {
-  color: #323232;
-}
-.new-comment__form-name-error {
-  border: 0.0625rem solid #d22d2d;
-}
-.new-comment__form-message {
-  border-radius: 0.25rem;
-  border: 0.125rem solid #e1e1e1;
-  background-color: #fafafa;
-  padding: 0.75rem;
-  margin-bottom: 1.5rem;
-  resize: none;
-  font-family: "Avenir";
-  height: 4.375rem;
-}
-.new-comment__form-message::-moz-placeholder {
-  color: #323232;
-}
-.new-comment__form-message:-ms-input-placeholder {
-  color: #323232;
-}
-.new-comment__form-message::placeholder {
-  color: #323232;
-}
-.new-comment__form-message:focus {
-  color: #323232;
-}
-@media only screen and (min-width: 1200px) {
-  .new-comment__form-message {
-    padding-bottom: 3rem;
-  }
-}
-.new-comment__form-button {
-  align-self: flex-end;
+.show__cta {
   border-radius: 0.25rem;
   background-color: #323232;
   color: #ffffff;
-  padding: 0.75rem;
   border: none;
   cursor: pointer;
-  margin-bottom: 0.75rem;
+  margin: 1rem 0;
   width: 100%;
+  font-family: "Avenir";
   height: 2.5rem;
 }
 @media only screen and (min-width: 768px) {
-  .new-comment__form-button {
-    margin-bottom: 1.5rem;
-    border-radius: 0.25rem;
-    background-color: #323232;
-    color: #ffffff;
+  .show__cta {
+    width: 9.375rem;
+    align-self: flex-end;
     padding: 0 2rem;
-    border: none;
-    cursor: pointer;
-    margin-bottom: 1rem;
-    width: 10rem;
   }
 }
-.new-comment__form-button:hover {
+.show__cta:hover {
   background-color: black;
-}
-
-.comments__list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 2.5rem;
-}
-
-.comment {
-  display: flex;
-  border-bottom: 0.0625rem solid #e1e1e1;
-  padding-top: 1.5rem;
-  width: 100%;
-}
-@media only screen and (min-width: 768px) {
-  .comment {
-    width: 70%;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  .comment {
-    width: 60%;
-  }
-}
-.comment__avatar {
-  margin-top: 0;
-  background-color: #e1e1e1;
-  border-radius: 50%;
-  width: 2.25rem;
-  height: 2.25rem;
-}
-@media only screen and (min-width: 768px) {
-  .comment__avatar {
-    width: 3rem;
-    height: 3rem;
-  }
-}
-.comment__details {
-  margin-left: 5%;
-  flex-grow: 2;
-  width: 75%;
-}
-.comment__details-header {
-  display: flex;
-  justify-content: space-between;
-}
-.comment__details-name {
-  font-weight: bold;
-}
-@media only screen and (min-width: 768px) {
-  .comment__details-name {
-    padding-right: 0.625rem;
-  }
-}
-.comment__details-timestamp {
-  color: #afafaf;
-}
-.comment__details-message {
-  padding: 1rem 0 1.5rem 0;
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-}/*# sourceMappingURL=bio.css.map */
+}/*# sourceMappingURL=shows.css.map */

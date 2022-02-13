@@ -1,6 +1,6 @@
 # Bandsite
 
-This project has one responsive main page
+This project has two responsive pages
 
 ## Extra Features
 
@@ -8,3 +8,6 @@ This project has one responsive main page
 ![grayscale](./screenshots/grayscale.png)
 
 2.Added Mailto Link feature.
+
+3.Added a page loading gif using setTimeout that adds delay of 5 seconds before displaying comments.
+![pagLoading](./screenshots/pageloding.png)

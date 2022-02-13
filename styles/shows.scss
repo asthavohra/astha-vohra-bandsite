@@ -1,0 +1,215 @@
+@use "./partials/breakpoints" as *;
+@use "./partials/colors" as *;
+@use "./partials/fonts" as *;
+@use "./partials/navbar" as *;
+@use "./partials/footer" as *;
+@use "./partials/default" as *;
+@use "./partials/hero-shows" as *;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.hero {
+  background-image: url("../assets/images/hero-shows.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 150vw;
+  max-height: 40rem;
+  font-family: "Avenir";
+
+  @include medium {
+    height: 87vw;
+    max-height: 850vw;
+  }
+  @include large {
+    height: 47vw;
+  }
+  &__content {
+    &-title {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      width: 18rem;
+      color: $color-white;
+      margin-bottom: 3rem;
+      margin-top: 3rem;
+
+      @include medium {
+        font-size: 3.2rem;
+        line-height: 4rem;
+        width: 31.25rem;
+        color: $color-white;
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+      }
+      @include large {
+        font-size: 3.14rem;
+        line-height: 4rem;
+        width: 35.625rem;
+        color: $color-white;
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+      }
+    }
+
+    &-bottom {
+      @include large {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+
+    &-song {
+      // With of iframe is static - doesn't look good growing and shrinking
+      border-radius: 3.125rem;
+      width: 100%;
+      max-width: 24.187rem;
+      height: 7.5rem;
+      @include medium {
+        width: 27.0625rem;
+      }
+      @include large {
+        padding-left: 4rem;
+        padding-bottom: 4rem;
+        width: 50%;
+        max-width: 30.625rem;
+        height: 7.875rem;
+      }
+    }
+    &-iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+//Shows
+.shows {
+  margin-bottom: 2.5rem;
+  font-family: "Avenir";
+
+  //move the section title beside the table for desktops
+  @include large {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 3rem;
+  }
+
+  // add right margin to the  Dates label to make it the same size as the dates column of the table
+  &__label:first-child {
+    @include medium {
+      margin-right: 11%;
+    }
+  }
+  // labels to be shown for devices >= tablet size
+  &__labels-tablet {
+    // don't display these labels for mobile devices
+    display: none;
+
+    @include medium {
+      // display these labels for devices >= tablet size
+      display: flex;
+      justify-content: space-between;
+      width: 75%;
+      padding: 1.5rem 1.125rem;
+    }
+  }
+  &__title {
+    padding-bottom: 2.5rem;
+
+    @include large {
+      // remove the padding from the top of the title to align it with the table
+      padding-top: 0;
+    }
+  }
+
+  &__list {
+    margin-bottom: 1.5rem;
+    @include large {
+      // make the width of the table smaller to fit beside title on desktop devices
+      width: 79%;
+    }
+  }
+}
+
+/*======================= Show Elements ======================= */
+
+.show {
+  border-bottom: 0.0625rem solid $color-mercury;
+  padding: 1rem;
+
+  // Put the show details in a row for devices >=tablet size
+  &:focus {
+    background-color: $color-alabaster;
+  }
+  @include medium {
+    display: flex;
+    //justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.125rem;
+  }
+  &__details {
+    @include medium {
+      // have the details take up 3/4 of the container and align in a row for medium devices
+      width: 75%;
+      display: flex;
+      align-items: baseline;
+      padding-top: 1.875rem;
+    }
+  }
+  &__selected {
+    background-color: $color-mercury;
+  }
+  &:not(&__selected):hover {
+    background-color: $color-alabaster;
+  }
+
+  &__label--mobile {
+    @extend .shows__label;
+    font-weight: 400;
+    text-transform: uppercase;
+    // Remove the individual labels for devices >=tablet size
+    @include medium {
+      display: none;
+    }
+  }
+
+  &__date {
+    font-weight: 600;
+    padding-bottom: 1.5rem;
+    //add a margin to the right side of the dates to make the column slightly wider than the other columns
+    margin-right: 11%;
+  }
+  &__venue {
+    padding-bottom: 1.5rem;
+  }
+  &__cta {
+    // create an input button with default sizing and specified height
+    border-radius: 0.25rem;
+    background-color: $color-black;
+    color: $color-white;
+    //padding: 1rem 0;
+    border: none;
+    cursor: pointer;
+    margin: 1rem 0;
+    width: 100%;
+    // margin-top: 1rem;
+    font-family: "Avenir";
+    height: 2.5rem;
+
+    @include medium {
+      width: 9.375rem;
+      // push to the right side of the tablet
+      align-self: flex-end;
+      padding: 0 2rem;
+    }
+    &:hover {
+      background-color: black;
+    }
+  }
+}

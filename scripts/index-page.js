@@ -99,7 +99,19 @@ commentForm.addEventListener("submit", (event) => {
     timeStamp: new Date(),
     message: event.target.message.value,
   };
-  displayComment(newComment);
+  //push the new comment to the comments array
+  comments.push(newComment);
+
+  //clear all the previous comments from the screen
+  const allComments = document.querySelectorAll(".comment");
+  allComments.forEach((comment) => {
+    comment.remove();
+  });
+
+  // re-render all the comments from the comment array
+  comments.forEach((comment) => {
+    displayComment(comment);
+  });
 
   // Reset the input boxes with a blank value and the placeholder
   event.target.name.value = "";

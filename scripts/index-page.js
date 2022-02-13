@@ -43,10 +43,12 @@ const displayComment = (newComment) => {
     let label = document.createElement("div");
     label.classList.add(commentClasses[commentClassCounter++]);
     label.innerText = newComment[key];
+
     if (key === "timeStamp") {
       //using dynamic timestamp with jquery timeago function
       label.innerText = jQuery.timeago(newComment[key]);
     }
+
     if (key === "message") {
       commentDetails.appendChild(commentDetailsHeader);
       commentDetails.appendChild(label);

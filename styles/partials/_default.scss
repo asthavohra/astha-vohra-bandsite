@@ -84,7 +84,7 @@ h5,
   line-height: 1.25rem;
   color: $color-silver;
   font-weight: 600;
-  margin: 4px;
+  margin: 0.25rem;
 }
 // Define the default padding on the left and right side of the page for consistent alignment
 .footer,
@@ -103,10 +103,10 @@ h5,
 }
 // Default margins for the footer div
 .footer__contact div {
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 
   @include large {
-    padding-bottom: 24px;
+    padding-bottom: 1.5rem;
   }
 }
 // Default spacing for section titles
@@ -119,17 +119,17 @@ h5,
   font-size: 1.5rem;
 
   // Set up consistent padding for the title of each section
-  padding: 32px 0 24px 0;
+  padding: 2rem 0 1.5rem 0;
 
   @include medium {
-    padding: 40px 0 32px 0;
+    padding: 2.5rem 0 2rem 0;
     line-height: 1.2;
     font-weight: 700;
     line-height: 2.75rem;
     font-size: 2.255rem;
   }
   @include large {
-    padding: 40px 0 40px 0;
+    padding: 2.5rem 0 2.5rem 0;
     line-height: 1.2;
     font-weight: 700;
     line-height: 2.75rem;
@@ -157,11 +157,11 @@ h5,
 
 // Default styling for show labels
 .shows__label {
-  padding-bottom: 16px;
+  padding-bottom: 1rem;
   @include medium {
     width: 34%;
   }
   @include large {
-    padding-bottom: 32px;
+    padding-bottom: 2rem;
   }
 }

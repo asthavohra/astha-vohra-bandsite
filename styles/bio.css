@@ -351,7 +351,7 @@ h5,
   line-height: 1.25rem;
   color: #afafaf;
   font-weight: 600;
-  margin: 4px;
+  margin: 0.25rem;
 }
 
 .footer,
@@ -381,11 +381,11 @@ h5,
 }
 
 .footer__contact div {
-  padding-bottom: 20px;
+  padding-bottom: 1.25rem;
 }
 @media only screen and (min-width: 1200px) {
   .footer__contact div {
-    padding-bottom: 24px;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -394,11 +394,11 @@ h5,
   font-weight: 700;
   line-height: 2rem;
   font-size: 1.5rem;
-  padding: 32px 0 24px 0;
+  padding: 2rem 0 1.5rem 0;
 }
 @media only screen and (min-width: 768px) {
   .section__title {
-    padding: 40px 0 32px 0;
+    padding: 2.5rem 0 2rem 0;
     line-height: 1.2;
     font-weight: 700;
     line-height: 2.75rem;
@@ -407,7 +407,7 @@ h5,
 }
 @media only screen and (min-width: 1200px) {
   .section__title {
-    padding: 40px 0 40px 0;
+    padding: 2.5rem 0 2.5rem 0;
     line-height: 1.2;
     font-weight: 700;
     line-height: 2.75rem;
@@ -433,7 +433,7 @@ h5,
 }
 
 .shows__label {
-  padding-bottom: 16px;
+  padding-bottom: 1rem;
 }
 @media only screen and (min-width: 768px) {
   .shows__label {
@@ -442,7 +442,7 @@ h5,
 }
 @media only screen and (min-width: 1200px) {
   .shows__label {
-    padding-bottom: 32px;
+    padding-bottom: 2rem;
   }
 }
 

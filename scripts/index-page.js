@@ -18,39 +18,38 @@ let comments = [
       "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
   },
 ];
+let commentClasses = [
+  "comment__details-name",
+  "comment__details-timestamp",
+  "comment__details-message",
+];
+
 // This function builds and displays a comment based on the object passed to it
 const displayComment = (newComment) => {
+  let commentClassCounter = 0;
+
   // Element containing the comment avatar
   let commentAvatar = document.createElement("div");
   commentAvatar.classList.add("comment__avatar");
 
-  // Element containing the comment name
-  let commentName = document.createElement("div");
-  commentName.classList.add("comment__details-name");
-  commentName.innerText = newComment.name;
-
-  // Element containing the comment timestamp
-  let commentTime = document.createElement("div");
-  commentTime.classList.add("comment__details-timestamp");
-  // display the time stamped as a time passed message
-  commentTime.innerText = newComment.timeStamp;
-
-  // Element containing the comment message
-  let commentMessage = document.createElement("div");
-  commentMessage.classList.add("comment__details-message");
-  commentMessage.innerText = newComment.message;
-
-  // div containing the message and time stamp
   let commentDetailsHeader = document.createElement("div");
   commentDetailsHeader.classList.add("comment__details-header");
-  commentDetailsHeader.appendChild(commentName);
-  commentDetailsHeader.appendChild(commentTime);
 
-  //div containing header and message
   let commentDetails = document.createElement("div");
   commentDetails.classList.add("comment__details");
-  commentDetails.appendChild(commentDetailsHeader);
-  commentDetails.appendChild(commentMessage);
+
+  // Elements containing the name, comment and timeStamp
+  Object.keys(newComment).forEach((key) => {
+    let label = document.createElement("div");
+    label.classList.add(commentClasses[commentClassCounter++]);
+    label.innerText = newComment[key];
+    if (key === "message") {
+      commentDetails.appendChild(commentDetailsHeader);
+      commentDetails.appendChild(label);
+    } else {
+      commentDetailsHeader.appendChild(label);
+    }
+  });
 
   // div containing avatar and comment details
   let comment = document.createElement("div");
@@ -62,11 +61,15 @@ const displayComment = (newComment) => {
   let commentsList = document.querySelector(".comments__list");
   commentsList.prepend(comment);
 };
-
-/* loop through each object in the comments array - build the html element and display it*/
-comments.forEach((comment) => {
-  displayComment(comment);
-});
+// Diving deeper
+// added a timeout of 5 seconds before displaying comments.
+setTimeout(function () {
+  // loop through each object in the comments array - build the html element and display it.
+  comments.forEach((comment) => {
+    displayComment(comment);
+  });
+  document.getElementById("comment_loader").remove();
+}, 5000);
 
 let nameField = document.getElementById("name");
 let commentForm = document.querySelector(".new-comment__form");

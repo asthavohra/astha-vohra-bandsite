@@ -1,35 +1,75 @@
-let shows = [
-  {
-    date: "Mon Sept 06 2021",
-    venue: "Ronald Lane",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Tue Sept 21 2021 ",
-    venue: "Pier 3 East ",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Oct 15 2021",
-    venue: "View Lounge ",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Sat Nov 06 2021 ",
-    venue: "Hyatt Agency ",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Fri Nov 26 2021",
-    venue: "Moscow Center",
-    location: "San Francisco, CA",
-  },
-  {
-    date: "Wed Dec 15 2021 ",
-    venue: "Press Club",
-    location: "San Francisco, CA",
-  },
-];
+//api key used
+let apiKey = "85f2ec0f-2a71-46d9-9a4b-058939997635";
+let hostName = "https://project-1-api.herokuapp.com";
+let showDateApiPath = "/showdates";
+
+let getShowDatesUrl = () => {
+  return `${hostName}${showDateApiPath}?api_key=${apiKey}`;
+};
+let getShowDatesData = () => {
+  let showDatesUrl = getShowDatesUrl();
+  axios
+    .get(showDatesUrl)
+    .then((response) => {
+      displayShowDateData(response);
+    })
+    .catch((error) => {
+      //request went and response returned with error ;anyhting apart from 2xx
+      if (error.response) {
+        console.log(error.response);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log(error.message);
+      }
+    });
+};
+getShowDatesData();
+let displayShowDateData = (response) => {
+  if (response && response.data) {
+    let shows = response.data;
+    displayShowHeaders();
+    shows.forEach((show) => {
+      let showClassCounter = 0;
+      let showDiv = document.createElement("div");
+      showDiv.classList.add("show");
+      showDiv.setAttribute("onclick", "markActive(event)");
+      //created element for each show detail
+      let showLabels = document.createElement("ul");
+      showLabels.classList.add("show__details");
+      //iterated through each object in array using its key fom the key value pairs
+      Object.keys(show).forEach((key) => {
+        if (key !== "id") {
+          let showLabel = document.createElement("li");
+          showLabel.classList.add("show__label--mobile");
+          showLabel.innerText = key;
+
+          let showLabelValue = document.createElement("li");
+          showLabelValue.classList.add(showDetailsClasses[showClassCounter++]);
+
+          if (key === "date") {
+            let date = new Date(parseInt(show[key]));
+            showLabelValue.innerText = date.toDateString();
+          } else {
+            showLabelValue.innerText = show[key];
+          }
+
+          showLabels.appendChild(showLabel);
+          showLabels.appendChild(showLabelValue);
+          showClassCounter = showClassCounter % 3;
+        }
+      });
+      showDiv.appendChild(showLabels);
+      //added buy tickets button
+      let showButton = document.createElement("button");
+      showButton.classList.add("show__cta");
+      showButton.innerText = "BUY TICKETS";
+      showDiv.appendChild(showButton);
+      showContainer.appendChild(showDiv);
+    });
+  }
+};
+// get the shows data from the api
 
 // initialize an array to hold the classes for each show detail
 let showDetailsClasses = ["show__date", "show__venue", "show__location"];
@@ -37,6 +77,7 @@ let showDetailsClasses = ["show__date", "show__venue", "show__location"];
 let showContainer = document.querySelector(".shows__list");
 
 //This function creats the headers for the shows
+
 const displayShowHeaders = () => {
   // initialize an array to hold each labels for each show detail
   let showHeaderTexts = ["DATE", "VENUE", "LOCATION"];
@@ -53,37 +94,7 @@ const displayShowHeaders = () => {
   //append to show__list div
   showContainer.appendChild(showHeaderList);
 };
-//created a div and added onclick event
-const displayShowDetails = (show) => {
-  let showClassCounter = 0;
-  let showDiv = document.createElement("div");
-  showDiv.classList.add("show");
-  showDiv.setAttribute("onclick", "markActive(event)");
-  //created element for each show detail
-  let showLabels = document.createElement("ul");
-  showLabels.classList.add("show__details");
-  //iterated through each object in array using its key fom the key value pairs
-  Object.keys(show).forEach((key) => {
-    let showLabel = document.createElement("li");
-    showLabel.classList.add("show__label--mobile");
-    showLabel.innerText = key;
 
-    let showLabelValue = document.createElement("li");
-    showLabelValue.classList.add(showDetailsClasses[showClassCounter++]);
-    showLabelValue.innerText = show[key];
-
-    showLabels.appendChild(showLabel);
-    showLabels.appendChild(showLabelValue);
-    showClassCounter = showClassCounter % 3;
-  });
-  showDiv.appendChild(showLabels);
-  //added buy tickets button
-  let showButton = document.createElement("button");
-  showButton.classList.add("show__cta");
-  showButton.innerText = "BUY TICKETS";
-  showDiv.appendChild(showButton);
-  showContainer.appendChild(showDiv);
-};
 //used this function to add color to each row when selected
 const markActive = (event) => {
   let showDivs = showContainer.querySelectorAll("div");
@@ -99,10 +110,3 @@ const markActive = (event) => {
   }
   showParent.classList.add("show__selected");
 };
-
-displayShowHeaders();
-
-// Display the entire shows array
-shows.forEach((show) => {
-  displayShowDetails(show);
-});

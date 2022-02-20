@@ -11,6 +11,10 @@ let getCommentsUrl = () => {
 let getLikeUrl = (id) => {
   return `${hostName}${commentsApiPath}/${id}${likeApiPath}`;
 };
+//this function interpolates and return url
+let getDeleteCommentUrl = (id) => {
+  return `${hostName}${commentsApiPath}/${id}`;
+};
 //this function gets the response from api using axios and stores the data of response in a variable called comments
 let getCommentsFromApi = () => {
   //passed apiKey variable as params and passed commentsUrl
@@ -176,7 +180,7 @@ let addComment = (comment) => {
 
 let increaseLike = (id) => {
   axios
-    .put(getLikeUrl(id) + "?api_key=" + apiKey)
+    .put(getLikeUrl(id), null, { params: { api_key: apiKey } })
     .then((response) => {
       let likeValidation = validateGetLikeData(response);
       if (likeValidation) {

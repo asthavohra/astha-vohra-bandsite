@@ -835,4 +835,7 @@ body {
 }
 .comment__details-message-count {
   margin-right: 1rem;
+}
+.comment__details-message--delete {
+  margin-left: auto;
 }/*# sourceMappingURL=bio.css.map */

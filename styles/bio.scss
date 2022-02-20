@@ -212,6 +212,15 @@ body {
       padding: 1rem 0 1.5rem 0;
       font-size: 0.875rem;
       line-height: 1.375rem;
+      &-like {
+        display: flex;
+        align-items: center;
+        margin-top: 0.25rem;
+        justify-content: start;
+      }
+      &-count {
+        margin-right: 1rem;
+      }
     }
   }
 }

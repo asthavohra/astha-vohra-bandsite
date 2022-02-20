@@ -1,103 +1,129 @@
-//api key used
-let apiKey = "85f2ec0f-2a71-46d9-9a4b-058939997635";
+//api key and hostname declared as variables
 let hostName = "https://project-1-api.herokuapp.com";
-let showDateApiPath = "/showdates";
+let apiKey = "85f2ec0f-2a71-46d9-9a4b-05893999763512";
 
-let getShowDatesUrl = () => {
-  return `${hostName}${showDateApiPath}?api_key=${apiKey}`;
+//this function interpolates and returns the url
+let getShowDateUrl = () => {
+  let showDateApiPath = "/showdates";
+  return `${hostName}${showDateApiPath}`;
 };
-let getShowDatesData = () => {
-  let showDatesUrl = getShowDatesUrl();
+
+//this function gets the response from api using axios and stores the data of response in a variable called shows
+let getDataFromApi = () => {
+  //passed apiKey variable as params
   axios
-    .get(showDatesUrl)
+    .get(getShowDateUrl(), {
+      params: {
+        api_key: apiKey,
+      },
+    })
     .then((response) => {
-      displayShowDateData(response);
+      //validateData function is called and the status is stored in a validationStatus variable
+      let validationStatus = validateData(response);
+      if (validationStatus) {
+        //if successfull then store the data in shows variable and call displayData to perform DOM
+        let shows = response.data;
+        displayData(shows);
+      } else {
+        //log an error if validation had issues
+        console.log("Sorry! There is some error");
+      }
     })
     .catch((error) => {
-      //request went and response returned with error ;anyhting apart from 2xx
-      if (error.response) {
-        console.log(error.response);
-      } else if (error.request) {
-        console.log(error.request);
-      } else {
-        console.log(error.message);
+      console.error("Sorry couldn't display the page due to error", error);
+    });
+};
+
+//this function takes the response and validates it
+let validateData = (response) => {
+  if (
+    response &&
+    response.status === 200 &&
+    response.data &&
+    response.data.length > 0
+  )
+    return true;
+  else return false;
+};
+
+// create the tablet labels that show on medium devices
+let displayData = (shows) => {
+  let showListDiv = document.querySelector(".shows__list");
+  let showslabelstabletDiv = document.createElement("ul");
+  showslabelstabletDiv.classList.add("shows__labels-tablet");
+
+  // initialize an array to hold each labels for each show detail on medium and larger devices
+  let labels = ["DATE", "VENUE", "LOCATION"];
+  //used forEach to create the labels for the page to display on medium and larger devices
+
+  labels.forEach((label) => {
+    let showslabelDiv = document.createElement("li");
+    showslabelDiv.classList.add("shows__label");
+    showslabelDiv.innerText = label;
+    showslabelstabletDiv.appendChild(showslabelDiv);
+  });
+
+  showListDiv.appendChild(showslabelstabletDiv);
+
+  shows.forEach((show) => {
+    let showDiv = document.createElement("div");
+    showDiv.classList.add("show");
+    //Add event listener
+    showDiv.setAttribute("onclick", "markActive(event)");
+
+    let showDetailsDiv = document.createElement("ul");
+    showDetailsDiv.classList.add("show__details");
+
+    // initialize an array to hold the classes for each show detail
+    let showDetailsClasses = ["show__date", "show__venue", "show__location"];
+    let showDetailsClassesCounter = 0;
+    //iterated through each object in show array using its key fom the key value pairs
+    Object.keys(show).forEach((key) => {
+      if (key !== "id") {
+        //This block creates labels specific for mobile
+        let showLabelMobileDateDiv = document.createElement("li");
+        showLabelMobileDateDiv.classList.add("show__label--mobile");
+        showLabelMobileDateDiv.innerText = key;
+        showDetailsDiv.appendChild(showLabelMobileDateDiv);
+
+        //This block adds classes based on showDetailsClasses array
+        let showDetailsValueDiv = document.createElement("li");
+        showDetailsValueDiv.classList.add(
+          showDetailsClasses[showDetailsClassesCounter]
+        );
+        if (key === "date") {
+          //the date was in string ,used parseInt to convert it into integer and stored it into date variable
+          let date = new Date(parseInt(show[key]));
+          //used toDateString method to change the format of the date
+          showDetailsValueDiv.innerText = date.toDateString();
+        } else {
+          showDetailsValueDiv.innerText = show[key];
+        }
+        showDetailsDiv.appendChild(showDetailsValueDiv);
+
+        showDetailsClassesCounter++;
+        if (showDetailsClassesCounter >= showDetailsClasses.length) {
+          showDetailsClassesCounter = 0;
+        }
       }
     });
-};
-getShowDatesData();
-let displayShowDateData = (response) => {
-  if (response && response.data) {
-    let shows = response.data;
-    displayShowHeaders();
-    shows.forEach((show) => {
-      let showClassCounter = 0;
-      let showDiv = document.createElement("div");
-      showDiv.classList.add("show");
-      showDiv.setAttribute("onclick", "markActive(event)");
-      //created element for each show detail
-      let showLabels = document.createElement("ul");
-      showLabels.classList.add("show__details");
-      //iterated through each object in array using its key fom the key value pairs
-      Object.keys(show).forEach((key) => {
-        if (key !== "id") {
-          let showLabel = document.createElement("li");
-          showLabel.classList.add("show__label--mobile");
-          showLabel.innerText = key;
 
-          let showLabelValue = document.createElement("li");
-          showLabelValue.classList.add(showDetailsClasses[showClassCounter++]);
+    showDiv.appendChild(showDetailsDiv);
 
-          if (key === "date") {
-            let date = new Date(parseInt(show[key]));
-            showLabelValue.innerText = date.toDateString();
-          } else {
-            showLabelValue.innerText = show[key];
-          }
+    let showCtaDiv = document.createElement("button");
+    showCtaDiv.classList.add("show__cta");
+    showCtaDiv.innerText = "BUY TICKETS";
 
-          showLabels.appendChild(showLabel);
-          showLabels.appendChild(showLabelValue);
-          showClassCounter = showClassCounter % 3;
-        }
-      });
-      showDiv.appendChild(showLabels);
-      //added buy tickets button
-      let showButton = document.createElement("button");
-      showButton.classList.add("show__cta");
-      showButton.innerText = "BUY TICKETS";
-      showDiv.appendChild(showButton);
-      showContainer.appendChild(showDiv);
-    });
-  }
-};
-// get the shows data from the api
+    showDiv.appendChild(showCtaDiv);
 
-// initialize an array to hold the classes for each show detail
-let showDetailsClasses = ["show__date", "show__venue", "show__location"];
-//Get the container on the page that a show will be appended to
-let showContainer = document.querySelector(".shows__list");
-
-//This function creats the headers for the shows
-
-const displayShowHeaders = () => {
-  // initialize an array to hold each labels for each show detail
-  let showHeaderTexts = ["DATE", "VENUE", "LOCATION"];
-  // create the tablet labels that show on medium devices
-  let showHeaderList = document.createElement("ul");
-  showHeaderList.classList.add("shows__labels-tablet");
-  //used forEach to iterate through each label and create its element, add class and append it to shows__labels-tablet
-  showHeaderTexts.forEach((labels) => {
-    let showLabel = document.createElement("li");
-    showLabel.classList.add("shows__label");
-    showLabel.innerText = labels;
-    showHeaderList.appendChild(showLabel);
+    showListDiv.appendChild(showDiv);
   });
-  //append to show__list div
-  showContainer.appendChild(showHeaderList);
 };
 
 //used this function to add color to each row when selected
-const markActive = (event) => {
-  let showDivs = showContainer.querySelectorAll("div");
+let markActive = (event) => {
+  let showListDiv = document.querySelector(".shows__list");
+  let showDivs = showListDiv.querySelectorAll("div");
   let currentDiv = event.target;
   let showParent = currentDiv;
   showDivs.forEach(function (show) {
@@ -110,3 +136,6 @@ const markActive = (event) => {
   }
   showParent.classList.add("show__selected");
 };
+
+//-------Caller------
+getDataFromApi();

@@ -826,4 +826,13 @@ body {
   padding: 1rem 0 1.5rem 0;
   font-size: 0.875rem;
   line-height: 1.375rem;
+}
+.comment__details-message-like {
+  display: flex;
+  align-items: center;
+  margin-top: 0.25rem;
+  justify-content: start;
+}
+.comment__details-message-count {
+  margin-right: 1rem;
 }/*# sourceMappingURL=bio.css.map */

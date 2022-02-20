@@ -1,126 +1,236 @@
-let comments = [
-  {
-    name: "Connor Walton",
-    timeStamp: "02/17/2021",
-    message:
-      "This is art. This is inexplicable magic expressed in the purest way, everything that makes up this majestic work deserves reverence. Let us appreciate this for what it is and what it contains.",
-  },
-  {
-    name: "Emilie Beach",
-    timeStamp: "01/09/2021",
-    message:
-      "I feel blessed to have seen them in person. What a show! They were just perfection. If there was one day of my life I could relive, this would be it. What an incredible day.",
-  },
-  {
-    name: "Miles Acosta",
-    timeStamp: "12/20/2020",
-    message:
-      "I can't stop listening. Every time I hear one of their songs - the vocals - it gives me goosebumps. Shivers straight down my spine. What a beautiful expression of creativity. Can't get enough.",
-  },
-];
-let commentClasses = [
-  "comment__details-name",
-  "comment__details-timestamp",
-  "comment__details-message",
-];
-
-// This function builds and displays a comment based on the object passed to it
-const displayComment = (newComment) => {
-  let commentClassCounter = 0;
-
-  // Element containing the comment avatar
-  let commentAvatar = document.createElement("div");
-  commentAvatar.classList.add("comment__avatar");
-
-  let commentDetailsHeader = document.createElement("div");
-  commentDetailsHeader.classList.add("comment__details-header");
-
-  let commentDetails = document.createElement("div");
-  commentDetails.classList.add("comment__details");
-
-  // Elements containing the name, comment and timeStamp
-  Object.keys(newComment).forEach((key) => {
-    let label = document.createElement("div");
-    label.classList.add(commentClasses[commentClassCounter++]);
-    label.innerText = newComment[key];
-
-    if (key === "timeStamp") {
-      //using dynamic timestamp with jquery timeago function
-      label.innerText = jQuery.timeago(newComment[key]);
-    }
-
-    if (key === "message") {
-      commentDetails.appendChild(commentDetailsHeader);
-      commentDetails.appendChild(label);
-    } else {
-      commentDetailsHeader.appendChild(label);
-    }
-  });
-
-  // div containing avatar and comment details
-  let comment = document.createElement("div");
-  comment.classList.add("comment");
-  comment.appendChild(commentAvatar);
-  comment.appendChild(commentDetails);
-
-  //Once the comment is built add it to the comment list
-  let commentsList = document.querySelector(".comments__list");
-  commentsList.prepend(comment);
+//api key and hostname declared as variables
+let hostName = "https://project-1-api.herokuapp.com";
+let apiKey = "85f2ec0f-2a71-46d9-9a4b-05893999763512";
+let commentsApiPath = "/comments";
+let likeApiPath = "/like";
+//this function interpolates and returns the url
+let getCommentsUrl = () => {
+  return `${hostName}${commentsApiPath}`;
 };
-// Diving deeper
-// added a timeout of 5 seconds before displaying comments.
-setTimeout(function () {
-  // loop through each object in the comments array - build the html element and display it.
-  comments.forEach((comment) => {
-    displayComment(comment);
-  });
-  document.getElementById("comment_loader").remove();
-}, 5000);
+//this function interpolates and return url
+let getLikeUrl = (id) => {
+  return `${hostName}${commentsApiPath}/${id}${likeApiPath}`;
+};
+//this function gets the response from api using axios and stores the data of response in a variable called comments
+let getCommentsFromApi = () => {
+  //passed apiKey variable as params and passed commentsUrl
+  axios
+    .get(getCommentsUrl(), {
+      params: {
+        api_key: apiKey,
+      },
+    })
+    .then((response) => {
+      //validateData function is called and the status is stored in a validationStatus variable
+      let validationStatus = validateGetCommentsData(response);
+      if (validationStatus) {
+        //if successfull then store the data in comments variable and call displayData to perform DOM
+        let comments = response.data;
+        //sorted comments based on timestamp
+        comments.sort((a, b) => (a.timestamp > b.timestamp ? 1 : -1));
+        displayCommentsData(comments);
+      } else {
+        //log an error if validation had issues
+        console.log("Sorry! There is some error");
+      }
+    })
+    .catch((error) => {
+      console.error("Sorry couldn't display the page due to error", error);
+    });
+};
 
-let nameField = document.getElementById("name");
-let commentForm = document.querySelector(".new-comment__form");
-// submit the form values using an event listener
-commentForm.addEventListener("submit", (event) => {
-  // prevents the page from reloading upon submit
+//this function takes the response and validates it
+let validateGetCommentsData = (response) => {
+  if (
+    response &&
+    response.status === 200 &&
+    response.data &&
+    response.data.length > 0
+  )
+    return true;
+  else return false;
+};
+
+//used forEach to access each and called addComment function to perform DOM
+let displayCommentsData = (comments) => {
+  //removing the page loader gif after 3 sec so that data from API can be displayed
+  setTimeout(() => {
+    let commentLoader = document.getElementById("comment_loader");
+    commentLoader.remove();
+
+    comments.forEach((comment) => {
+      addComment(comment);
+    });
+  }, 3000);
+};
+
+let postComment = (requestBody) => {
+  //used post method to post comments and passed getCommentsUrl function
+  axios
+    .post(getCommentsUrl(), requestBody, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      params: {
+        api_key: apiKey,
+      },
+    })
+    .then((response) => {
+      //on validation success,response.data is stored in newComments variable and displayNewComment function is called
+      let validateCommentsStatus = validateNewCommentData(response);
+      if (validateCommentsStatus) {
+        let newComments = response.data;
+        displayNewComment(newComments);
+        //on validation not success log an error message
+      } else {
+        console.log("Sorry! There is some error");
+      }
+    })
+    .catch((error) => {
+      console.log("Unable to post comments due to ", error);
+    });
+};
+
+//validated the reponse from api
+let validateNewCommentData = (response) => {
+  if (response && response.status === 200 && response.data) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+//this function calls addComment function  and also clears the name and comment field when submit happens
+let displayNewComment = (newComments) => {
+  addComment(newComments);
+  let nameLabel = document.getElementById("name");
+  let messageLabel = document.getElementById("message");
+  nameLabel.value = "";
+  messageLabel.value = "";
+};
+
+//this function performs DOM for adding new comments and also displaying comments from api
+let addComment = (comment) => {
+  let mainCommentDiv = document.getElementById("comments");
+
+  let commentDiv = document.createElement("div");
+  commentDiv.classList.add("comment");
+
+  let commentAvatarDiv = document.createElement("div");
+  commentAvatarDiv.classList.add("comment__avatar");
+
+  let commentDetailsDiv = document.createElement("div");
+  commentDetailsDiv.classList.add("comment__details");
+
+  let commentDetailsHeaderDiv = document.createElement("div");
+  commentDetailsHeaderDiv.classList.add("comment__details-header");
+
+  let commentDetailsNameDiv = document.createElement("div");
+  commentDetailsNameDiv.classList.add("comment__details-name");
+  commentDetailsNameDiv.innerText = comment.name;
+
+  let commentDetailsIimestampDiv = document.createElement("div");
+  commentDetailsIimestampDiv.classList.add("comment__details-timestamp");
+  let date = new Date(comment.timestamp);
+  //converts time into the required readable format
+  commentDetailsIimestampDiv.innerText = jQuery.timeago(date);
+
+  commentDetailsHeaderDiv.appendChild(commentDetailsNameDiv);
+  commentDetailsHeaderDiv.appendChild(commentDetailsIimestampDiv);
+
+  commentDetailsDiv.appendChild(commentDetailsHeaderDiv);
+
+  commentDiv.appendChild(commentAvatarDiv);
+  commentDiv.appendChild(commentDetailsDiv);
+
+  mainCommentDiv.prepend(commentDiv);
+
+  let commentDetailsMessageDiv = document.createElement("div");
+  commentDetailsMessageDiv.classList.add("comment__details-message");
+  commentDetailsMessageDiv.innerText = comment.comment;
+
+  commentDetailsDiv.appendChild(commentDetailsMessageDiv);
+
+  let likeButtonDiv = document.createElement("div");
+  likeButtonDiv.classList.add("comment__details-message-like");
+  likeButtonCount = document.createElement("div");
+  likeButtonCount.classList.add("comment__details-message-count");
+  likeButtonCount.setAttribute("id", "" + comment.id + "");
+
+  likeButtonCount.innerText = comment.likes;
+  likeButtonDiv.appendChild(likeButtonCount);
+  let anchorLikeDiv = document.createElement("a");
+  anchorLikeDiv.setAttribute(
+    "href",
+    "javascript:increaseLike('" + comment.id + "');"
+  );
+
+  let likeButton = document.createElement("img");
+  likeButton.setAttribute("src", "../assets/icons/SVG/icon-like.svg");
+  likeButton.alt = "like button icon";
+
+  anchorLikeDiv.appendChild(likeButton);
+  likeButtonDiv.appendChild(anchorLikeDiv);
+  commentDetailsMessageDiv.appendChild(likeButtonDiv);
+};
+
+let increaseLike = (id) => {
+  axios
+    .put(getLikeUrl(id) + "?api_key=" + apiKey)
+    .then((response) => {
+      let likeValidation = validateGetLikeData(response);
+      if (likeValidation) {
+        let currentLikeCountDiv = document.getElementById("" + id + "");
+        currentLikeCountDiv.innerText = response.data.likes;
+      } else {
+        console.log("Unable to increase likes", response);
+      }
+    })
+    .catch((error) => {
+      console.error("Unable to display likes due to ", error);
+    });
+};
+
+let validateGetLikeData = (response) => {
+  if (
+    response &&
+    response.status === 200 &&
+    response.data &&
+    response.data.likes
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+//evenlistener to remove the red border from name field when key is pressed
+document.getElementById("name").addEventListener("keypress", (event) => {
+  let nameLabel = document.getElementById("name");
+  let nameValue = nameLabel.value;
+  if (nameValue || nameValue !== "") {
+    nameLabel.classList.remove("new-comment__form-name-error");
+  }
+});
+
+//get form element and add eventlistner
+document.getElementById("commentForm").addEventListener("submit", (event) => {
+  //prevents default behaviour
   event.preventDefault();
-  //checks if the name is null or empty and adds a new class to the element which adds new property
-
-  let nameValue = nameField.value;
-  if (nameValue === null || nameValue === "") {
-    nameField.classList.add("new-comment__form-name-error");
+  let nameLabel = document.getElementById("name");
+  let messageLabel = document.getElementById("message");
+  let requestBody = {
+    name: nameLabel.value,
+    comment: messageLabel.value,
+  };
+  if (!requestBody.name) {
+    nameLabel.classList.add("new-comment__form-name-error");
     return;
   } else {
-    nameField.classList.remove("new-comment__form-name-error");
+    nameLabel.classList.remove("new-comment__form-name-error");
   }
-
-  // create a new comment object from the values submitted
-  let newComment = {
-    name: nameValue,
-    timeStamp: new Date(),
-    message: event.target.message.value,
-  };
-  //push the new comment to the comments array
-  comments.push(newComment);
-
-  //clear all the previous comments from the screen
-  const allComments = document.querySelectorAll(".comment");
-  allComments.forEach((comment) => {
-    comment.remove();
-  });
-
-  // re-render all the comments from the comment array
-  comments.forEach((comment) => {
-    displayComment(comment);
-  });
-
-  // Reset the input boxes with a blank value and the placeholder
-  event.target.name.value = "";
-  event.target.message.value = "";
+  postComment(requestBody);
 });
 
-nameField.addEventListener("keypress", (event) => {
-  let nameValue = nameField.value;
-  if (nameValue !== null || nameValue !== "") {
-    nameField.classList.remove("new-comment__form-name-error");
-  }
-});
+//-----Caller------
+getCommentsFromApi();

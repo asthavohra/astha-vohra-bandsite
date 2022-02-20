@@ -41,6 +41,10 @@
         display: block;
         padding-bottom: 0.44rem;
         color: $color-silver;
+        &-active {
+          color: $color-white;
+          border-bottom: 0.4125rem solid $color-white;
+        }
 
         &:hover {
           border-bottom: 0.4125rem solid $color-white;
@@ -49,10 +53,10 @@
       }
     }
 
-    &-item #active {
-      color: $color-white;
-      border-bottom: 0.4125rem solid $color-white;
-    }
+    // &-item #active {
+    //   color: $color-white;
+    //   border-bottom: 0.4125rem solid $color-white;
+    // }
   }
 }
 @include medium {
@@ -86,6 +90,10 @@
           padding-bottom: 1.4rem;
           padding-top: 1.5rem;
           border-bottom: 0.4125rem solid transparent;
+          &-active {
+            color: $color-white;
+            border-bottom: 0.4125rem solid $color-white;
+          }
         }
       }
     }
@@ -112,6 +120,10 @@
         border-bottom: unset;
         &-link {
           border-bottom: 0.4125rem solid transparent;
+          &-active {
+            color: $color-white;
+            border-bottom: 0.4125rem solid $color-white;
+          }
         }
       }
     }

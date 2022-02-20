@@ -55,13 +55,13 @@
   padding-bottom: 0.44rem;
   color: #afafaf;
 }
+.header__nav-menu-item-link-active {
+  color: #ffffff;
+  border-bottom: 0.4125rem solid #ffffff;
+}
 .header__nav-menu-item-link:hover {
   border-bottom: 0.4125rem solid #ffffff;
   color: #ffffff;
-}
-.header__nav-menu-item #active {
-  color: #ffffff;
-  border-bottom: 0.4125rem solid #ffffff;
 }
 
 @media only screen and (min-width: 768px) {
@@ -99,6 +99,10 @@
     padding-top: 1.5rem;
     border-bottom: 0.4125rem solid transparent;
   }
+  .header__nav-menu-item-link-active {
+    color: #ffffff;
+    border-bottom: 0.4125rem solid #ffffff;
+  }
 }
 @media only screen and (min-width: 1200px) {
   .header__nav-logo-container {
@@ -121,6 +125,10 @@
   }
   .header__nav-menu-item-link {
     border-bottom: 0.4125rem solid transparent;
+  }
+  .header__nav-menu-item-link-active {
+    color: #ffffff;
+    border-bottom: 0.4125rem solid #ffffff;
   }
 }
 ul {

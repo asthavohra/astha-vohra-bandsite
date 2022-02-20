@@ -14,3 +14,8 @@ This project has two responsive pages
 
 4. Added dynamic timestamp for the Bio page Comment Section
    ![timestamp](./screenshots/timestamp.png)
+
+5. Added a Like button which increments the like counter of the comment specified by id
+
+6. Added a Delete button which deletes the comment specified by id.
+   ![like-and-delete](./screenshots/like-and-delete.png)

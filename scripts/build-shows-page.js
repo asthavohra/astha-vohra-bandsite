@@ -7,7 +7,6 @@ let getShowDateUrl = () => {
   let showDateApiPath = "/showdates";
   return `${hostName}${showDateApiPath}`;
 };
-
 //this function gets the response from api using axios and stores the data of response in a variable called shows
 let getDataFromApi = () => {
   //passed apiKey variable as params
@@ -33,7 +32,6 @@ let getDataFromApi = () => {
       console.error("Sorry couldn't display the page due to error", error);
     });
 };
-
 //this function takes the response and validates it
 let validateData = (response) => {
   if (
@@ -45,17 +43,14 @@ let validateData = (response) => {
     return true;
   else return false;
 };
-
 // create the tablet labels that show on medium devices
 let displayData = (shows) => {
   let showListDiv = document.querySelector(".shows__list");
   let showslabelstabletDiv = document.createElement("ul");
   showslabelstabletDiv.classList.add("shows__labels-tablet");
-
   // initialize an array to hold each labels for each show detail on medium and larger devices
   let labels = ["DATE", "VENUE", "LOCATION"];
   //used forEach to create the labels for the page to display on medium and larger devices
-
   labels.forEach((label) => {
     let showslabelDiv = document.createElement("li");
     showslabelDiv.classList.add("shows__label");
@@ -119,7 +114,6 @@ let displayData = (shows) => {
     showListDiv.appendChild(showDiv);
   });
 };
-
 //used this function to add color to each row when selected
 let markActive = (event) => {
   let showListDiv = document.querySelector(".shows__list");

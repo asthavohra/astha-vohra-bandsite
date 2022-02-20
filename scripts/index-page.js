@@ -3,11 +3,11 @@ let hostName = "https://project-1-api.herokuapp.com";
 let apiKey = "85f2ec0f-2a71-46d9-9a4b-05893999763512";
 let commentsApiPath = "/comments";
 let likeApiPath = "/like";
-//this function interpolates and returns the url
+//this function interpolates and return the url to get comments
 let getCommentsUrl = () => {
   return `${hostName}${commentsApiPath}`;
 };
-//this function interpolates and return url
+//this function interpolates and return url to get likes
 let getLikeUrl = (id) => {
   return `${hostName}${commentsApiPath}/${id}${likeApiPath}`;
 };
@@ -54,7 +54,6 @@ let validateGetCommentsData = (response) => {
     return true;
   else return false;
 };
-
 //used forEach to access each and called addComment function to perform DOM
 let displayCommentsData = (comments) => {
   //removing the page loader gif after 3 sec so that data from API can be displayed
@@ -67,9 +66,8 @@ let displayCommentsData = (comments) => {
     });
   }, 3000);
 };
-
+//used post method to post comments and passed getCommentsUrl function
 let postComment = (requestBody) => {
-  //used post method to post comments and passed getCommentsUrl function
   axios
     .post(getCommentsUrl(), requestBody, {
       headers: {
@@ -112,7 +110,6 @@ let displayNewComment = (newComments) => {
   nameLabel.value = "";
   messageLabel.value = "";
 };
-
 //this function performs DOM for adding new comments and also displaying comments from api
 let addComment = (comment) => {
   let mainCommentDiv = document.getElementById("comments");
@@ -166,6 +163,7 @@ let addComment = (comment) => {
   likeButtonCount.innerText = comment.likes;
   likeButtonDiv.appendChild(likeButtonCount);
   let anchorLikeDiv = document.createElement("a");
+  //called the javascript increaseLike function and passed comment id
   anchorLikeDiv.setAttribute(
     "href",
     `javascript:increaseLike('${comment.id}');`
@@ -178,6 +176,7 @@ let addComment = (comment) => {
   let deleteButtonDiv = document.createElement("div");
   deleteButtonDiv.classList.add("comment__details-message--delete");
   let anchorDeleteDiv = document.createElement("a");
+  //called the javascript deleteComment function and passed comment id
   anchorDeleteDiv.setAttribute(
     "href",
     `javascript:deleteComment('${comment.id}');`
@@ -192,9 +191,8 @@ let addComment = (comment) => {
   deleteButtonDiv.appendChild(anchorDeleteDiv);
   likeButtonDiv.appendChild(deleteButtonDiv);
   commentDetailsMessageDiv.appendChild(likeButtonDiv);
-  //commentDetailsMessageDiv.appendChild(deleteButtonDiv);
 };
-
+//function takes id as input and use axios put method
 let increaseLike = (id) => {
   axios
     .put(getLikeUrl(id), null, { params: { api_key: apiKey } })
@@ -213,7 +211,7 @@ let increaseLike = (id) => {
       console.error("Unable to display likes due to ", error);
     });
 };
-
+//validate the response from api
 let validateGetLikeData = (response) => {
   if (
     response &&
@@ -226,7 +224,7 @@ let validateGetLikeData = (response) => {
     return false;
   }
 };
-//
+//function uses id as input and uses axios delete method
 let deleteComment = (id) => {
   axios
     .delete(getDeleteCommentUrl(id), { params: { api_key: apiKey } })
@@ -243,7 +241,7 @@ let deleteComment = (id) => {
       console.error("Unable to delete comment due to ", error);
     });
 };
-
+//validate response from api
 let validateDeleteComment = (response) => {
   if (
     response &&
@@ -256,7 +254,7 @@ let validateDeleteComment = (response) => {
     return false;
   }
 };
-
+/*Event listeners starts here*/
 //evenlistener to remove the red border from name field when key is pressed
 document.getElementById("name").addEventListener("keypress", (event) => {
   let nameLabel = document.getElementById("name");
@@ -265,7 +263,6 @@ document.getElementById("name").addEventListener("keypress", (event) => {
     nameLabel.classList.remove("new-comment__form-name-error");
   }
 });
-
 //get form element and add eventlistner
 document.getElementById("commentForm").addEventListener("submit", (event) => {
   //prevents default behaviour

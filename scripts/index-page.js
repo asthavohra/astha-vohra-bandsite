@@ -119,6 +119,8 @@ let addComment = (comment) => {
 
   let commentDiv = document.createElement("div");
   commentDiv.classList.add("comment");
+  //set id for the div to fetch it later for deletion
+  commentDiv.setAttribute("id", "" + comment.id + "_comment");
 
   let commentAvatarDiv = document.createElement("div");
   commentAvatarDiv.classList.add("comment__avatar");
@@ -159,23 +161,38 @@ let addComment = (comment) => {
   likeButtonDiv.classList.add("comment__details-message-like");
   likeButtonCount = document.createElement("div");
   likeButtonCount.classList.add("comment__details-message-count");
-  likeButtonCount.setAttribute("id", "" + comment.id + "");
+  likeButtonCount.setAttribute("id", `${comment.id}`);
 
   likeButtonCount.innerText = comment.likes;
   likeButtonDiv.appendChild(likeButtonCount);
   let anchorLikeDiv = document.createElement("a");
   anchorLikeDiv.setAttribute(
     "href",
-    "javascript:increaseLike('" + comment.id + "');"
+    `javascript:increaseLike('${comment.id}');`
   );
 
   let likeButton = document.createElement("img");
   likeButton.setAttribute("src", "../assets/icons/SVG/icon-like.svg");
-  likeButton.alt = "like button icon";
+  likeButton.alt = "like comment icon";
+
+  let deleteButtonDiv = document.createElement("div");
+  deleteButtonDiv.classList.add("comment__details-message--delete");
+  let anchorDeleteDiv = document.createElement("a");
+  anchorDeleteDiv.setAttribute(
+    "href",
+    `javascript:deleteComment('${comment.id}');`
+  );
+  let deleteButton = document.createElement("img");
+  deleteButton.setAttribute("src", "../assets/icons/SVG/icon-delete.svg");
+  deleteButton.alt = "delete comment icon";
 
   anchorLikeDiv.appendChild(likeButton);
   likeButtonDiv.appendChild(anchorLikeDiv);
+  anchorDeleteDiv.appendChild(deleteButton);
+  deleteButtonDiv.appendChild(anchorDeleteDiv);
+  likeButtonDiv.appendChild(deleteButtonDiv);
   commentDetailsMessageDiv.appendChild(likeButtonDiv);
+  //commentDetailsMessageDiv.appendChild(deleteButtonDiv);
 };
 
 let increaseLike = (id) => {
@@ -184,7 +201,9 @@ let increaseLike = (id) => {
     .then((response) => {
       let likeValidation = validateGetLikeData(response);
       if (likeValidation) {
-        let currentLikeCountDiv = document.getElementById("" + id + "");
+        //fetched the divsion using comment id
+        let currentLikeCountDiv = document.getElementById(`${id}`);
+        //replace the innertext to get the increased like count
         currentLikeCountDiv.innerText = response.data.likes;
       } else {
         console.log("Unable to increase likes", response);
@@ -201,6 +220,36 @@ let validateGetLikeData = (response) => {
     response.status === 200 &&
     response.data &&
     response.data.likes
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+//
+let deleteComment = (id) => {
+  axios
+    .delete(getDeleteCommentUrl(id), { params: { api_key: apiKey } })
+    .then((response) => {
+      let deleteValidation = validateDeleteComment(response);
+      if (deleteValidation) {
+        let commentDiv = document.getElementById(`${id}_comment`);
+        commentDiv.remove();
+      } else {
+        console.log("Unable to delete comments", response);
+      }
+    })
+    .catch((error) => {
+      console.error("Unable to delete comment due to ", error);
+    });
+};
+
+let validateDeleteComment = (response) => {
+  if (
+    response &&
+    response.status === 200 &&
+    response.data &&
+    response.data.id
   ) {
     return true;
   } else {
